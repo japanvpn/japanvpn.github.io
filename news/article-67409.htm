@@ -1,0 +1,209 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-67409.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka</title>
+        <meta name="description" content="分布式消息队列Kafka  kafka概述 kafka架构及核心概念 kafka部署及使用   1. 集群模式部署 2. 单节点多broker模式部署   kafka容错性测试    Kafka是一个" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-67409.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/af57e05ee02ed6f459421543533f5b1e.webp" />
+        <meta property="og:release_date" content="2025-03-05T11:10:04" />
+    <meta property="og:updated_time" content="2025-03-05T11:10:04" />
+        <meta property="og:description" content="分布式消息队列Kafka  kafka概述 kafka架构及核心概念 kafka部署及使用   1. 集群模式部署 2. 单节点多broker模式部署   kafka容错性测试    Kafka是一个" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3><font size="3">分布式消息队列Kafka</font></h3> <ul> <li><a href="#kafka_1" rel="nofollow">kafka概述</a></li> <li><a href="#kafka_3" rel="nofollow">kafka架构及核心概念</a></li> <li><a href="#kafka_15" rel="nofollow">kafka部署及使用</a></li> <li> <ul> <li><a href="#font_size31__18" rel="nofollow"><font size="3">1. 集群模式部署</font></a></li> <li><a href="#font_size32_broker_188" rel="nofollow"><font size="3">2. 单节点多broker模式部署</font></a></li> </ul> </li> <li><a href="#kafka_192" rel="nofollow">kafka容错性测试</a></li> </ul> </div> </h1> <p>Kafka是一个分布式的基于发布/订阅模式的<strong>消息队列</strong>，主要应用于大数据实时处理领域。</p> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/33a8f4036466490a7ecff3f21c6ff033.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"><br /><font size="3">1）<strong>Producer</strong> ：消息生产者，就是向kafka broker发消息的客户端；<br /> 2）<strong>Consumer</strong> ：消息消费者，向kafka broker取消息的客户端；<br /> 3）<strong>Consumer Group （CG）</strong>：消费者组，由多个consumer组成。消费者组内每个消费者负责消费不同分区的数据，一个分区只能由一个消费者消费；消费者组之间互不影响。所有的消费者都属于某个消费者组，<font color="red">即消费者组是逻辑上的一个订阅者。</font><br /> 4）<strong>Broker</strong> ：一台kafka服务器就是一个broker。一个集群由多个broker组成。一个broker可以容纳多个topic。<br /> 5）<strong>Topic</strong> ：可以理解为一个队列，<font color="red">生产者和消费者面向的都是一个topic</font>；<br /> 6）<strong>Partition</strong>：为了实现扩展性，一个非常大的topic可以分布到多个broker（即服务器）上，<font color="red">一个topic可以分为多个partition</font>，每个partition是一个有序的队列；<br /> 7）<strong>Replica</strong>：副本，为保证集群中的某个节点发生故障时，该节点上的partition数据不丢失，且kafka仍然能够继续工作，kafka提供了副本机制，一个topic的每个分区都有若干个副本，一个leader和若干个follower。<br /> 8）<strong>leader</strong>：每个分区多个副本的“主”，生产者发送数据的对象，以及消费者消费数据的对象都是leader。<br /> 9）<strong>follower</strong>：每个分区多个副本中的“从”，实时从leader中同步数据，保持和leader数据的同步。leader发生故障时，某个follower会成为新的follower。</font></p> </h1> <p><font size="3">安装之前需要事先安装zookeeper集群，因为我之前安装CM已经装了zookeeper，这里就不在安装了</font></p> <h2><a id="font_size31__18" rel="nofollow"></a><font size="3">1. 集群模式部署</font></h2> <p>1）上传安装包并解压</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 software]</span><span class="token comment"># tar -zxvf kafka_2.11-0.11.0.2.tgz -C /opt/module/</span></code></pre> <p>2）修改解压后的文件名称</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 software]</span><span class="token comment"># cd /opt/module/</span><span class="token namespace">[root@hadoop103 module]</span><span class="token comment"># ll</span> total 0 drwxr<span class="token operator">-</span>xr<span class="token operator">-</span>x 6 root root 89 Nov 11  2017 kafka_2<span class="token punctuation">.</span>11<span class="token operator">-</span>0<span class="token punctuation">.</span>11<span class="token punctuation">.</span>0<span class="token punctuation">.</span>2<span class="token namespace">[root@hadoop103 module]</span><span class="token comment"># mv kafka_2.11-0.11.0.2 kafka-0.11.0.2</span><span class="token namespace">[root@hadoop103 module]</span><span class="token comment">#</span></code></pre> <p>3）在/opt/module/kafka目录下创建logs文件夹和data文件夹，做到日志和数据目录分离开</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 kafka-0.11.0.2]</span><span class="token comment"># mkdir logs</span><span class="token namespace">[root@hadoop103 kafka-0.11.0.2]</span><span class="token comment"># mkdir data</span></code></pre> <p>4）修改配置文件</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 kafka-0.11.0.2]</span><span class="token comment"># cd config</span><span class="token namespace">[root@hadoop103 config]</span><span class="token comment"># vim server.properties</span></code></pre> <p>输入以下内容：</p> <pre><code class="prism language-powershell"><span class="token comment">#broker的全局唯一编号，不能重复</span> broker<span class="token punctuation">.</span>id=0<span class="token comment">#删除topic功能使能</span> delete<span class="token punctuation">.</span>topic<span class="token punctuation">.</span>enable=true auto<span class="token punctuation">.</span>create<span class="token punctuation">.</span>topics<span class="token punctuation">.</span>enable = false<span class="token comment">#处理网络请求的线程数量</span> num<span class="token punctuation">.</span>network<span class="token punctuation">.</span>threads=3<span class="token comment">#用来处理磁盘IO的现成数量</span> num<span class="token punctuation">.</span>io<span class="token punctuation">.</span>threads=8<span class="token comment">#发送套接字的缓冲区大小</span> socket<span class="token punctuation">.</span>send<span class="token punctuation">.</span>buffer<span class="token punctuation">.</span>bytes=102400<span class="token comment">#接收套接字的缓冲区大小</span> socket<span class="token punctuation">.</span>receive<span class="token punctuation">.</span>buffer<span class="token punctuation">.</span>bytes=102400<span class="token comment">#请求套接字的缓冲区大小</span> socket<span class="token punctuation">.</span>request<span class="token punctuation">.</span>max<span class="token punctuation">.</span>bytes=104857600<span class="token comment">#kafka数据存放的路径，日志会默认放在logs路径下</span> log<span class="token punctuation">.</span>dirs=<span class="token operator">/</span>opt<span class="token operator">/</span>module<span class="token operator">/</span>kafka<span class="token operator">-</span>0<span class="token punctuation">.</span>11<span class="token punctuation">.</span>0<span class="token punctuation">.</span>2<span class="token operator">/</span><span class="token keyword">data</span><span class="token comment">#topic在当前broker上的默认分区个数</span> num<span class="token punctuation">.</span>partitions=1<span class="token comment">#用来恢复和清理data下数据的线程数量</span> num<span class="token punctuation">.</span>recovery<span class="token punctuation">.</span>threads<span class="token punctuation">.</span>per<span class="token punctuation">.</span><span class="token keyword">data</span><span class="token punctuation">.</span><span class="token function">dir</span>=1<span class="token comment">#segment文件保留的最长时间，超时将被删除</span> log<span class="token punctuation">.</span>retention<span class="token punctuation">.</span>hours=168<span class="token comment">#配置连接Zookeeper集群地址</span> zookeeper<span class="token punctuation">.</span>connect=hadoop101:2181<span class="token punctuation">,</span>hadoop102:2181<span class="token punctuation">,</span>hadoop103:2181</code></pre> <p>5）配置环境变量</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 config]</span><span class="token comment"># vim /etc/profile</span><span class="token comment">#KAFKA_HOME</span> export KAFKA_HOME=<span class="token operator">/</span>opt<span class="token operator">/</span>module<span class="token operator">/</span>kafka<span class="token operator">-</span>0<span class="token punctuation">.</span>11<span class="token punctuation">.</span>0<span class="token punctuation">.</span>2 export PATH=<span class="token variable">$PATH</span>:<span class="token variable">$KAFKA_HOME</span><span class="token operator">/</span>bin</code></pre> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 config]</span><span class="token comment"># source /etc/profile</span><span class="token namespace">[root@hadoop103 config]</span><span class="token comment"># echo $KAFKA_HOME</span><span class="token operator">/</span>opt<span class="token operator">/</span>module<span class="token operator">/</span>kafka<span class="token operator">-</span>0<span class="token punctuation">.</span>11<span class="token punctuation">.</span>0<span class="token punctuation">.</span>2<span class="token namespace">[root@hadoop103 config]</span><span class="token comment">#</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/171e180b61b0b86b209cc4a519fde15b.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka" width="80%"/></p> <p>6）分发安装包</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 module]</span><span class="token comment"># cpush slave: kafka-0.11.0.2 /opt/module/</span><span class="token namespace">[root@hadoop103 module]</span><span class="token comment"># cexec slave: 'ls /opt/module/'</span><span class="token namespace">[root@hadoop103 module]</span><span class="token comment"># cpush slave: /etc/profile /etc/</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/c03e01682bdaf3756e8e0e4183b4f7d7.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka" width="80%"/></p> <blockquote> <p><strong>注意</strong>：如果没有分发环境变量配置文件，需要各自配置其他机器的环境变量</p> </blockquote> <p>7）分别在hadoop104和hadoop105上修改配置文件/opt/module/kafka-0.11.0.2/config/server.properties中的<font color="red">broker.id=1</font>、<font color="red">broker.id=2</font></p> <blockquote> <p>注：broker.id不得重复</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/957e5b052ac4d036cecb182afa8ba7c6.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <p>8）启动集群<br /> 启动kfaka之前要先启动zookeeper集群(因为我这里已经启动了，所以不需要重新启动zookeeper服务)</p> <pre><code class="prism language-powershell"><span class="token comment">#zookeeper启动命令</span> bin<span class="token operator">/</span>zkServer<span class="token punctuation">.</span>sh<span class="token function">start</span></code></pre> <p>然后依次在hadoop103、hadoop104、hadoop105节点上启动kafka，并使用jps/jps -m 查看进程</p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 kafka-0.11.0.2]</span><span class="token comment"># bin/kafka-server-start.sh -daemon config/server.properties</span><span class="token namespace">[root@hadoop104 kafka-0.11.0.2]</span><span class="token comment"># bin/kafka-server-start.sh -daemon config/server.properties</span><span class="token namespace">[root@hadoop105 kafka-0.11.0.2]</span><span class="token comment"># bin/kafka-server-start.sh -daemon config/server.properties</span></code></pre> <p><font color="red" size="3">hadoop103</font><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/47c9f583e44ad18ecc4f59ece63c7283.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka" width="80%"/><br /><font color="red" size="3">hadoop104</font><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/f4dbebef6ddaa32f745229a40da9ac3e.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka" width="80%"/><br /><font color="red" size="3">hadoop105</font><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/a9c06c983cc244cecdc0e03d027a3d45.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka" width="80%"/><br /> 9）关闭集群命令</p> <pre><code class="prism language-powershell">bin<span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span>stop<span class="token punctuation">.</span>sh stop</code></pre> <p>10）Kafka的使用</p> <ul> <li>创建topic</li> </ul> <pre><code class="prism language-powershell">kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh<span class="token operator">--</span>create<span class="token operator">--</span>zookeeper hadoop101:2181<span class="token punctuation">,</span>hadoop102:2181<span class="token punctuation">,</span>hadoop103:2181<span class="token operator">--</span>replication<span class="token operator">-</span>factor 1<span class="token operator">--</span>partitions 1<span class="token operator">--</span>topic first<span class="token comment">#参数说明</span><span class="token operator">--</span>zookeeper ：zookeeper地址<span class="token operator">--</span>replication<span class="token operator">-</span>factor ：用来设置主题的副本数。每个主题可以有多个副本，副本位于集群中不同的broker上，也就是说副本的数量不能超过broker的数量，否则创建主题时会失败。<span class="token operator">--</span>partitions  ：用来设置分区数</code></pre> <ul> <li>查看topic列表</li> </ul> <pre><code class="prism language-powershell">kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh<span class="token operator">--</span>list<span class="token operator">--</span>zookeeper hadoop101:2181</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/47d6447ec51730f893c0996b9de21200.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <ul> <li>生产者生产数据</li> </ul> <pre><code class="prism language-powershell">kafka<span class="token operator">-</span>console<span class="token operator">-</span>producer<span class="token punctuation">.</span>sh<span class="token operator">--</span>broker<span class="token operator">-</span>list hadoop103:9092<span class="token operator">--</span>topic first<span class="token comment">#first是topic的名字</span><span class="token comment">#broker指的是kafka的服务端，可以是一个服务器也可以是一个集群。producer和consumer都相当于这个服务端的客户端。</span><span class="token comment">#broker-list指定集群中的一个或者多个服务器，一般我们再使用console producer的时候，这个参数是必备参数</span></code></pre> <ul> <li>消费者消费数据</li> </ul> <pre><code class="prism language-powershell">kafka<span class="token operator">-</span>console<span class="token operator">-</span>consumer<span class="token punctuation">.</span>sh<span class="token operator">--</span>bootstrap<span class="token operator">-</span>server hadoop103:9092<span class="token operator">--</span>topic first<span class="token comment"># 通过以上命令，可以看到消费者可以接收生产者发送的消息</span><span class="token comment"># bootstrap-servers指的是目标集群的服务器地址,新版本之后(新版本指的是kafka 0.8.0之后的版本)开始使用 --bootstrap-server代替 --zookeeper</span><span class="token comment"># 这个和broker-list功能是一样的，只不过我们在console producer要求用后者。</span><span class="token comment"># 如果需要从头开始接收数据，需要添加--from-beginning参数</span> kafka<span class="token operator">-</span>console<span class="token operator">-</span>consumer<span class="token punctuation">.</span>sh<span class="token operator">--</span>bootstrap<span class="token operator">-</span>server hadoop103:9092<span class="token operator">--</span><span class="token keyword">from</span><span class="token operator">-</span><span class="token keyword">begin</span><span class="token comment">#ning --topic first</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/ff54614c7798409997b80ecd2bdc1aeb.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <blockquote> <p>如上图左边是生产者生产了三条数据，右边是消费者消费情况，可以看到三条数据都可以接收到</p> </blockquote> <ul> <li>消费者组</li> </ul> <pre><code class="prism language-powershell"><span class="token namespace">[root@master bin]</span><span class="token comment"># ./kafka-console-consumer.sh --bootstrap-server master:9092 --topic mytest --consumer-property group.id=group_mytes</span></code></pre> <h2><a id="font_size32_broker_188" rel="nofollow"></a><font size="3">2. 单节点多broker模式部署</font></h2> <p>参考官网：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kafka.apachecn.org/quickstart.html"  rel="nofollow">中文文档</a><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/9383cde4f3efe227e0e8738fe0946b9e.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> </h1> <p><font size="3">创建一个有三个副本一个分区的topic</font></p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 ~]</span><span class="token comment"># kafka-topics.sh --create --zookeeper hadoop101:2181,hadoop102:2181,hadoop103:2181 --replication-factor 3 --partitions 1 --topic mytest</span> Created topic<span class="token string">"mytest"</span><span class="token punctuation">.</span></code></pre> <p><font size="3">查看该topic的详细信息，使用describe命令</font></p> <pre><code class="prism language-powershell"><span class="token namespace">[root@hadoop103 ~]</span><span class="token comment"># kafka-topics.sh --describe --zookeeper hadoop101:2181 --topic mytest</span> Topic:mytest	PartitionCount:1	ReplicationFactor:3	Configs: 	Topic: mytest	Partition: 0	Leader: 0	Replicas: 0<span class="token punctuation">,</span>2<span class="token punctuation">,</span>1	Isr: 0<span class="token punctuation">,</span>2<span class="token punctuation">,</span>1</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/19de7fd6f36fdcb3884d4db965bc7365.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <blockquote> <p>leader 是在给出的所有partitons中负责读写的节点，每个节点都有可能成为leader<br /> replicas 显示给定partiton所有副本所存储节点的节点列表，不管该节点是否是leader或者是否存活。<br /> ISR 副本都已同步的节点集合，这个集合中的所有节点都是存活状态，并且跟leader同步；如果有节点挂掉，Kafka会自动收缩 ISR 集合,将该副本“踢出”ISR</p> </blockquote> <p><font size="3">创建生产者和消费者并消费数据</font></p> <pre><code class="prism language-powershell"><span class="token comment">#生产者</span> kafka<span class="token operator">-</span>console<span class="token operator">-</span>producer<span class="token punctuation">.</span>sh<span class="token operator">--</span>broker<span class="token operator">-</span>list hadoop103:9092<span class="token punctuation">,</span>hadoop104:9092<span class="token punctuation">,</span>hadoop105:9092<span class="token operator">--</span>topic mytest<span class="token comment">#消费者</span> kafka<span class="token operator">-</span>console<span class="token operator">-</span>consumer<span class="token punctuation">.</span>sh<span class="token operator">--</span>bootstrap<span class="token operator">-</span>server hadoop105:9092<span class="token punctuation">,</span>hadoop103:9092<span class="token punctuation">,</span>hadoop104:9092<span class="token operator">--</span>topic mytest</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/d46105c305e1114ca9c4fa4ae47a8926.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <ul> <li>kill其中的一个broker，先kill非leader节点</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/1af2544acafa6199377f51c7fd62405d.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <blockquote> <p>我这里kill的是broker1节点，然后再次生产数据，查看消费者是否可以接收到数据，并查看isr的变化从，下图可以看到broker1节点已经被踢出了，但这时候不影响消费者消费数据</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/1ab77a4ed26b2397bb9b2f422703541a.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <ul> <li>kill Leader节点，然后再次进行消费</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220610/11b8a9d3d85249705a6c69fb6592fc4b.jpg" alt="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka"></p> <blockquote> <p>可以看到消费者依然可以消费到数据，说明有三个副本的时候，可以允许两个节点挂掉(上图中WANG是警告不是报错，是正常现象)</p> </blockquote> <blockquote> <p>Kafka副本机制<br /> 一、什么是副本机制：<br /> 通常是指分布式系统在多台网络互联的机器上保存有相同的数据拷贝<br /> 二、副本机制的好处：<br /> 1、提供数据冗余<br /> 系统部分组件失效，系统依然能够继续运转，因而增加了整体可用性以及数据持久性<br /> 2、提供高伸缩性<br /> 支持横向扩展，能够通过增加机器的方式来提升读性能，进而提高读操作吞吐量<br /> 3、改善数据局部性<br /> 允许将数据放入与用户地理位置相近的地方，从而降低系统延时。<br /> 参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/jetqiu/p/11681838.html"  rel="nofollow">kafka副本机制</a></p> </blockquote> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66779.htm">Docker 安装 Confluence</a></p>
+                                        <p>下一个：<a href="/news/article-67410.htm">python PIL Image 图像处理基本操作实例_python</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-63685.htm" title="动物疫苗价格表图片及价格大全（动物疫苗价格查询）">动物疫苗价格表图片及价格大全（动物疫苗价格查询）</a></li>
+                        <li class="py-2"><a href="/news/article-64908.htm" title="厦门同安百姓宠物网 厦门同安百姓宠物网招聘">厦门同安百姓宠物网 厦门同安百姓宠物网招聘</a></li>
+                        <li class="py-2"><a href="/news/article-63684.htm" title="动物医院儿童画 动物医院怎么画">动物医院儿童画 动物医院怎么画</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-27-free-v2ray-subscribe.htm" title="日本VPN | 2月27日18.4M/S|免费Clash/SSR/Shadowrocket/V2ray免费节点订阅分享">日本VPN | 2月27日18.4M/S|免费Clash/SSR/Shadowrocket/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-67410.htm" title="python PIL Image 图像处理基本操作实例_python">python PIL Image 图像处理基本操作实例_python</a></li>
+                        <li class="py-2"><a href="/news/article-65538.htm" title="宠物粮厂家招聘最新信息（宠物粮基地）">宠物粮厂家招聘最新信息（宠物粮基地）</a></li>
+                        <li class="py-2"><a href="/news/article-66151.htm" title="芭比堂宠物医院价格表（芭比堂宠物医院百度百科）">芭比堂宠物医院价格表（芭比堂宠物医院百度百科）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-node-subscribe-links.htm" title="日本VPN | 3月4日19.2M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享">日本VPN | 3月4日19.2M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-66779.htm" title="Docker 安装 Confluence">Docker 安装 Confluence</a></li>
+                        <li class="py-2"><a href="/news/article-66778.htm" title="springmvc获取页面值为null的原因">springmvc获取页面值为null的原因</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
