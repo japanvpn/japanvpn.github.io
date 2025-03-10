@@ -1,0 +1,208 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-70626.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具</title>
+        <meta name="description" content="先谈一下我对Span的看法， span是指向任意连续内存空间的类型安全、内存安全的视图。 如果你了解【滑动窗口】， 对Span的操作还可以理解为 针对连续内存空间的 滑动窗口。  Span和Memor" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-70626.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/468de379c09cbc8ae07f7b87499a63ae.webp" />
+        <meta property="og:release_date" content="2025-03-10T04:34:54" />
+    <meta property="og:updated_time" content="2025-03-10T04:34:54" />
+        <meta property="og:description" content="先谈一下我对Span的看法， span是指向任意连续内存空间的类型安全、内存安全的视图。 如果你了解【滑动窗口】， 对Span的操作还可以理解为 针对连续内存空间的 滑动窗口。  Span和Memor" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>先谈一下我对Span的看法， span是指向任意连续内存空间的类型安全、内存安全的视图。</p> <p>如果你了解【滑动窗口】， 对Span的操作还可以理解为 针对连续内存空间的 滑动窗口。</p> <blockquote> <p>Span和Memory都是包装了可以在pipeline上使用的结构化数据的内存缓冲器,他们被设计用于在pipeline中高效传递数据。</p> </blockquote> <h2 id="定语解读">定语解读</h2> <ol> <li> <strong>指向任意连续内存空间</strong>： 支持托管堆，原生内存、堆栈， 这个可从Span<t>的几个重载构造函数窥视一二。</t> </li> <li> <strong>类型安全</strong>： Span<t> 是一个泛型</t> </li> <li> <strong>内存安全</strong>： <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Span.cs"  target="_blank"  rel="nofollow">Span<t></t></a>是一个<code>readonly ref struct</code>数据结构, 用于表征一段连续内存的关键属性被设置成只读readonly， 保证了所有的操作只能在这段内存块内，不存在内存越界的风险。</li> </ol> <pre><code>// 截取自Span源码，表征一段连续内存的关键属性 Pointer &amp; Length 都只能从构造函数赋值  public readonly ref struct Span&lt;T&gt; {     /// &lt;summary&gt;A byref or a native ptr.&lt;/summary&gt;     internal readonly ByReference&lt;T&gt; _reference;     /// &lt;summary&gt;The number of elements this Span contains.&lt;/summary&gt;     private readonly int _length;          [MethodImpl(MethodImplOptions.AggressiveInlining)]     public Span(T[]? array)     {        if (array == null)        {            this = default;            return; // returns default        }        if (!typeof(T).IsValueType &amp;&amp; array.GetType() != typeof(T[]))            ThrowHelper.ThrowArrayTypeMismatchException();       _reference = new ByReference&lt;T&gt;(ref MemoryMarshal.GetArrayDataReference(array));       _length = array.Length;    } } </code></pre> <ol start="4"> <li> <strong>视图</strong>：操作结果会直接体现在底层的连续内存。</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/9ae46d3d918149c698860898aed8ed54.jpg" alt="站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具"></p> <p>至此我们来看一个简单的用法， 利用span操作指向一段堆栈空间。</p> <pre><code>static  void  Main()         {              Span&lt;byte&gt; arraySpan = stackalloc byte[100];  // 包含指针和Length的只读指针, 类似于go里面的切片              byte data = 0;             for (int ctr = 0; ctr &lt; arraySpan.Length; ctr++)                 arraySpan[ctr] = data++;              arraySpan.Fill(1);              var arraySum = Sum(arraySpan);             Console.WriteLine($"The sum is {arraySum}");   // 输出100              arraySpan.Clear();              var slice  =  arraySpan.Slice(0,50); // 因为是只读属性， 内部New Span&lt;&gt;(), 产生新的切片             arraySum = Sum(slice);             Console.WriteLine($"The sum is {arraySum}");  // 输出0         }          [MethodImpl(MethodImplOptions.AggressiveInlining)]         static int  Sum(Span&lt;byte&gt; array)         {             int arraySum = 0;             foreach (var value in array)                 arraySum += value;              return arraySum;         } </code></pre> <ul> <li>此处Span<byte> 指向了特定的堆栈空间， Fill,Clear 等操作的效果直接体现到该段内存。</byte> </li> <li>注意Slice切片方法，内部实质是产生新的Span，也是一个新的视图，对新span的操作会体现到原始底层数据结构。</li> </ul> <pre><code>  [MethodImpl(MethodImplOptions.AggressiveInlining)]         public Span&lt;T&gt; Slice(int start)         {             if ((uint)start &gt; (uint)_length)                 ThrowHelper.ThrowArgumentOutOfRangeException();              return new Span&lt;T&gt;(ref Unsafe.Add(ref _reference.Value, (nint)(uint)start /* force zero-extension */), _length - start);         } </code></pre> <p>从Slice切片源码，看到利用现有的ptr 和length，产生了新的操作视图，ptr的计算有赖于原ptr移动指针，但是依旧是作用在原始数据块上。</p> <h2 id="衍生技能点">衍生技能点</h2> <p>我们再细看Span的定义， 有几个关键词建议大家温故而知新。</p> <ul> <li> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct#readonly-struct"  target="_blank"  rel="nofollow">readonly  strcut</a> ：从C#7.2开始，你可以将readonly作用在struct上，指示该<strong>struct不可改变</strong>。</li> </ul> <blockquote> <p>span<t> 被定义为readonly struct，内部属性自然也是readonly，从上面的分析和实例看我们可以针对Span表征的特定连续内存空间做内容更新操作；<br /> 如果想限制更新该连续内存空间的内容， C#提供了<code>ReadOnlySpan&lt;T&gt;</code>类型， 该类型强调该块内存只读，也就是不存在Span<t> 拥有的Fill，Clear等方法。</t></t></p> </blockquote> <p>一线码农大佬写了文章讲述[使用span对字符串求和]的姿势，大家都说使用span能高效操作内存，我们对该用例BenchmarkDotnet压测。</p> <pre><code>using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Threading.Tasks; using System.Buffers; using System.Runtime.CompilerServices; using BenchmarkDotNet.Attributes; using BenchmarkDotNet.Running;  namespace ConsoleApp3 {   public class Program   {       static  void Main()       {           var summary = BenchmarkRunner.Run&lt;MemoryBenchmarkerDemo&gt;();       }   }    [MemoryDiagnoser,RankColumn]   public class MemoryBenchmarkerDemo   {       int NumberOfItems = 100000;        // 对字符串切割， 会产生字符串小对象       [Benchmark]       public void  StringSplit()       {           for (int i = 0; i &lt; NumberOfItems; i++)           {               var s = "97 3";                var arr = s.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);               var num1 = int.Parse(arr[0]);               var num2 = int.Parse(arr[1]);                _ = num1 + num2;           }                  }              // 对底层字符串切片       [Benchmark]       public void StringSlice()       {           for (int i = 0; i &lt; NumberOfItems; i++)           {               var s = "97 3";               var position = s.IndexOf(' ');               ReadOnlySpan&lt;char&gt; span = s.AsSpan();               var num1 = int.Parse(span.Slice(0, position));               var num2 = int.Parse(span.Slice(position));                _= num1+ num2;            }       }   } } </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/9104c68a03fb525442167b2f48783ea8.jpg" alt="站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具"></p> <p>解读：<br /> 对字符串运行时切分，不会利用驻留池，于是case1会在堆分配大量string小对象，对gc造成压力；<br /> case2对底层字符串切片，虽然会产生不同的透视对象Span， 但是实际还是指向的原始内存块的偏移区间，不存在内存分配。</p> <ul> <li> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct"  target="_blank"  rel="nofollow">ref  struct</a>:从C#7.2开始，ref可以作用在struct，指示<strong>该类型被分配在堆栈上，并且不能转义到托管堆</strong>。</li> </ul> <blockquote> <p>Span<t>,ReadonlySpan<t> 包装了对于任意连续内存快的透视操作，但是只能被存储堆栈上，不适用于一些场景，例如异步调用，.NET Core 2.1为此新增了<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/en-us/dotnet/standard/memory-and-spans/memory-t-usage-guidelines"  target="_blank"  rel="nofollow">Memory<t></t></a> , ReadOnlyMemory<t>， 可以被存储在托管堆上, 按下不表。</t></t></t></p> </blockquote> <p>最后用一张图总结<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/147a1c4496d6281c62666dba5b43e69a.jpg" alt="站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-70625.htm">AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-67409.htm" title="Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka">Spark Streaming实时流处理项目实战(四)分布式消息队列Kafka</a></li>
+                        <li class="py-2"><a href="/news/article-69984.htm" title="详解盒子模型和div布局">详解盒子模型和div布局</a></li>
+                        <li class="py-2"><a href="/news/article-66778.htm" title="springmvc获取页面值为null的原因">springmvc获取页面值为null的原因</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-node-subscribe-links.htm" title="日本VPN | 3月4日19.2M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享">日本VPN | 3月4日19.2M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-69327.htm" title="给动物打的针叫什么名字（给动物打针的地方叫什么）">给动物打的针叫什么名字（给动物打针的地方叫什么）</a></li>
+                        <li class="py-2"><a href="/news/article-68037.htm" title="养猫的人容易得15种病视频讲解一下图片（养猫的人容易得15种病视频讲解一下图片大全）">养猫的人容易得15种病视频讲解一下图片（养猫的人容易得15种病视频讲解一下图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-63679.htm" title="狗粮渠道批发中心（狗粮批发价）">狗粮渠道批发中心（狗粮批发价）</a></li>
+                        <li class="py-2"><a href="/news/article-64908.htm" title="厦门同安百姓宠物网 厦门同安百姓宠物网招聘">厦门同安百姓宠物网 厦门同安百姓宠物网招聘</a></li>
+                        <li class="py-2"><a href="/news/article-65538.htm" title="宠物粮厂家招聘最新信息（宠物粮基地）">宠物粮厂家招聘最新信息（宠物粮基地）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-node-subscribe-links.htm" title="日本VPN | 3月3日20.2M/S|免费Clash/Shadowrocket/SSR/V2ray免费节点订阅分享">日本VPN | 3月3日20.2M/S|免费Clash/Shadowrocket/SSR/V2ray免费节点订阅分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-70625.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现</title>
+        <meta name="description" content="大家好，好久没有输出博文了，一是因为比较忙，另外一个原因是最近主要的精力是在给 AgileConfig 添加一个新的功能：服务注册与发现。 先说说为什么会添加这个功能。我自己的项目是用 Consul " />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-70625.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/e7cbc43cc7e568feab18fa1351c842e1.webp" />
+        <meta property="og:release_date" content="2025-03-10T04:34:54" />
+    <meta property="og:updated_time" content="2025-03-10T04:34:54" />
+        <meta property="og:description" content="大家好，好久没有输出博文了，一是因为比较忙，另外一个原因是最近主要的精力是在给 AgileConfig 添加一个新的功能：服务注册与发现。 先说说为什么会添加这个功能。我自己的项目是用 Consul " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>大家好，好久没有输出博文了，一是因为比较忙，另外一个原因是最近主要的精力是在给 AgileConfig 添加一个新的功能：服务注册与发现。<br /> 先说说为什么会添加这个功能。我自己的项目是用 Consul 来做为服务注册发现组件的。自从我上线了 AgileConfig 做为配置中心后，我就很少去 Consul 观察服务的在线状态了，因为 AgileConfig 客户端列表已经在一定程度上能代表服务的状态了。服务注册发现与配置中心其实本质上都是解决了一类问题，那就是配置的动态化，所以大家会看到业界著名的组件很多都是同时实现这2个功能的，如 Consul，Nacos 等。所以我想干脆把这个功能给加上吧，这样可以省去部署一个组件。<br /> 当然也有同学说我不务正业，不去好好搞配置中心去搞什么服务注册发现。但是我还是做了。。。<br /> 不过大家放心 AgileConfig 的主业还是在配置中心上，服务注册发现只是附赠的小菜，可以用也可以不用，决定权完全在你。在实现上我也是对两个功能是完全解耦的。也就是说这2个功能都是互不影响独立运行的。唯一有交集的一个地方是，如果配置中心的客户端的 websocket 通道建立成功的时候，服务的心跳会借用这个通道。<br /> ✨✨✨Github地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/dotnetcore/AgileConfig"  target="_blank" rel="nofollow">https://github.com/dotnetcore/AgileConfig</a>  开源不易，欢迎star✨✨✨<br /> ✨✨✨Gitee地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/kklldog/AgileConfig"  target="_blank" rel="nofollow">https://gitee.com/kklldog/AgileConfig</a> ✨✨✨</p> <h2 id="什么是服务注册与发现">什么是服务注册与发现</h2> <p>首先先让我们回顾下服务注册发现的概念。<br /> 在实施微服务之后，我们的调用都变成了服务间的调用。服务间调用需要知道IP、端口等信息。再没有微服务之前，我们的调用信息一般都是写死在调用方的配置文件里（当然这话不绝对，有些公司会把这些信息写到数据库等公共的地方，以方便维护）。又由于业务的复杂，每个服务可能依赖N个其他服务，如果某个服务的IP，端口等信息发生变更，那么所有依赖该服务的服务的配置文件都要去修改，这样显然太麻烦了。有些服务为了负载是有个多个实例的，而且可能是随时会调整实例的数量。如果每次调整实例数量都要去修改其他服务的配置并重启那太麻烦了。<br /> 为了解决这个问题，业界就有了服务注册发现组件。<br /> 假设我们有服务A需要调用服务B，并且有服务注册发现组件R。整个大致流程将变成大概3部：<br /> 服务B启动向服务R注册自己的信息<br /> 服务A从服务R拉取服务B的信息<br /> 服务A调用服务B<br /> 有了服务注册发现组件之后，当修改A服务信息的时候再也不用去修改其他相关服务了。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/50ac317c4db0d4946956c0a978e198e3.jpg" alt="AgileConfig 1.6.0 发布 - 支持服务注册与发现"><br /> 参考我的另外一篇：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/kklldog/p/netcore-with-microservices-04.html"  target="_blank" rel="nofollow">.Net Core with 微服务 - Consul 注册中心</a></p> <h2 id="使用服务注册与发现">使用服务注册与发现</h2> <p>使用服务注册与发现功能需要更新服务端与客户端至 1.6.0 及以上版本。</p> <h3 id="启动服务端">启动服务端</h3> <p>服务端更新至 latest 镜像或 v-1.6.0 以上的镜像。<br /> 使用 docker 运行服务端实例：</p> <pre><code>sudo docker run \ --name agile_config \ -e TZ=Asia/Shanghai \ -e adminConsole=true \ -e db:provider=sqlite \ -e db:conn="Data Source=agile_config.db" \ -p 5000:5000 \ #-v /your_host_dir:/app/db \ -d kklldog/agile_config:latest</code></pre> <p>基本的使用没有太大的变化，只是在界面上添加了服务的相关管理界面，这里不在赘述。<br /> 相关教程:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/CKExp/p/15738149.html"  target="_blank" rel="nofollow">.Net Core &amp; Agile Config配置中心</a></p> <h3 id="使用客户端">使用客户端</h3> <p>客户端需要从 nuget 上安装 1.6.0 版本以上的 client 包。</p> <pre><code>Install-Package AgileConfig.Client -Version 1.6.0</code></pre> <p>新版的 client 简化了使用方式，以下以 .net6 为示例：<br /> 调用 UseAgileConfig 扩展方法即可注入 AgileConfig client .</p> <pre><code> var builder = WebApplication.CreateBuilder(args);  //use agileconfig client builder.Host.UseAgileConfig();  ...</code></pre> <p>在 appsettings.json 添加配置信息：</p> <pre><code> "AgileConfig": {     "appId": "test_app",     "secret": "test_app",     "nodes": "http://agileconfig_server.xbaby.xyz/",     "name": "client123",     "tag": "tag123",      "serviceRegister": { //服务注册信息，如果不配置该节点，则不会启动任何跟服务注册相关的服务 可选       "serviceId": "net6", //服务id，全局唯一，用来唯一标示某个服务       "serviceName": "net6MVC服务测试", //服务名，可以重复，某个服务多实例部署的时候这个serviceName就可以重复       "ip": "127.0.0.1", //服务的ip 可选       "port": 5005, //服务的端口 可选   }</code></pre> <p>其中 appId , secret 等配置同原来配置中心的使用方式没有任何改变。<br /><code>serviceRegister</code> 节点描述的是服务注册信息（如果删除这个节点那么服务注册功能就不会启动）：</p> <ul> <li>serviceId<br /> 服务id，全局唯一，用来唯一标示某个服务</li> <li>serviceName<br /> 服务名，可以重复，某个服务多实例部署的时候这个serviceName就可以重复</li> <li>ip<br /> 服务的ip 可选</li> <li>port<br /> 服务的端口 可选</li> <li>metaData<br /> 一个字符串数组，可以携带一些服务的相关信息，如版本等 可选</li> <li>alarmUrl<br /> 告警地址 可选。<br /> 如果某个服务出现异常情况，如一段时间内没有心跳，那么服务端会往这个地址 POST 一个请求并且携带服务相关信息，用户可以自己去实现提醒功能，比如发短信，发邮件等：</li> </ul> <pre><code>{     "serviceId":"0001",     "serviceName":"xxxx",     "time":"2022-01-01T12:00:000",     "status":"Unhealty",     "message": "服务不健康" }</code></pre> <ul> <li>heartbeat:mode<br /> 指定心跳的模式，server/client 。server代表服务端主动检测，client代表客户端主动上报。不填默认client模式 可选</li> <li>heartbeat:interval<br /> 心跳的间隔，默认时间30s 可选</li> <li>heartbeat:url<br /> 心跳模式为 server 的时候需要填写健康检测地址，如果是httpstatus为200段则判定存活，其它都视为失败 可选</li> </ul> <h3 id="服务的注册">服务的注册</h3> <p>当配置好客户端后，启动对应的应用程序，服务信息会自动注册到服务端并且开始心跳。如果服务正确注册到服务端，控制台的服务管理界面可以查看：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/1826b418955562964c731b1f80a1a4c4.jpg" alt="AgileConfig 1.6.0 发布 - 支持服务注册与发现"></p> <h3 id="服务发现">服务发现</h3> <p>现在服务已经注册上去了，那么怎么才能拿到注册中心所有的服务呢？同样非常简单，在程序内只要注入<code>IDiscoveryService</code>接口就可以通过它拿到所有的注册的服务。</p> <pre><code>public interface IDiscoveryService     {         string DataVersion { get; }         List&lt;ServiceInfo&gt; UnHealthyServices { get; }         List&lt;ServiceInfo&gt; HealthyServices { get; }         List&lt;ServiceInfo&gt; Services { get; }         Task RefreshAsync();     }</code></pre> <p>除了接口内置的方法，还有几个扩展方法方便用户使用，比如随机一个服务：</p> <pre><code>    public static class DiscoveryServiceExtension     {         public static IEnumerable&lt;ServiceInfo&gt; GetByServiceName(this IDiscoveryService ds, string serviceName)         {             return ds.Services.GetByServiceName(serviceName);         }          public static ServiceInfo GetByServiceId(this IDiscoveryService ds, string serviceId)         {             return ds.Services.GetByServiceId(serviceId);         }          public static ServiceInfo RandomOne(this IDiscoveryService ds, string serviceName)         {             return ds.Services.RandomOne(serviceName);         }     }</code></pre> <p>至此服务的注册与发现就已经完成了。</p> <h2 id="一些重要的信息">一些重要的信息</h2> <p>以上就是服务注册发现的简单使用，但是还有一些比较重要的信息希望大家在使用之前能够了解，这样有利于更好的使用以及出现问题的时候定位问题。</p> <h3 id="高可用">高可用</h3> <p>同 AgileConfig 的配置中心功能一样，服务注册后最后都是写到了数据库里。AgileConfig 的服务端可以部署多个来防止单点故障，同时可以分担压力。所以高可用的最佳实践就是部署 2 个以上的服务端节点，然后数据库做高可用方案。这样足够应付大多数要求不是特别高的场景。</p> <h3 id="强一致性">强一致性</h3> <p>同上 AgileConfig 通过数据库保证多个节点部署的时候的一致性问题。</p> <h3 id="服务的健康检测">服务的健康检测</h3> <p>服务的健康检测一般有2种方案：</p> <ol> <li>服务端主动询问</li> <li>客户端主动心跳<br /> AgileConfig 同时支持以上2个方案。AgileConfig client 默认实现了主动心跳。AgileConfig client 的主动心跳有2个渠道：</li> </ol> <ul> <li>websocket<br /> 长连接，如果AgileConfig client做为配置中心客户端是正常工作的，那么心跳会走websocket通道</li> <li>http<br /> 如果 websocket 不可用，那么会直接发起 http 请求做为心跳。<br /> 但是对于一些应用主动的心跳并不能代表服务真的是可以用的，因为心跳从服务已启动就会开始，但是某些接口可能还没真正的做好准备被调用。那么这个时候就可以选择服务端主动询问（heartbeat:mode=server）对应的检测接口来确定服务是否真的可用。<br /> AgileConfig 其实还实现了第三种方式：</li> </ul> <ol start="3"> <li>不检测<br /> 如果一个服务你确定它会永远在线，或者是没办法集成 AgileConfig client 的 sdk ，那么你可以标记它为不检测，这样它会一直是健康状态。</li> </ol> <h3 id="服务发现是如何即时更新的">服务发现是如何即时更新的</h3> <p>我们的 client 在启动后会拉取一次全量的服务列表。但是服务是会不断的上线，下线的，所以服务状态的更新是需要通知客户端的，然后客户端去拉取新的服务列表。AgileConfig 同样有2个策略来保证服务列表的即时刷新：</p> <ol> <li>当服务状态变化的时候，服务端通过 websocket 即时通知所有的 client 主动刷新配置列表</li> <li>如果服务端的主动通知由于网络等原因失效的时候，client 会在每次心跳的时候比较本地服务列表 md5 版本跟服务端的列表的 md5 信息，如果不一致，那么 client 会主动拉取一次新的服务列表。</li> </ol> <h3 id="关闭服务注册与发现">关闭服务注册与发现</h3> <p>删除<code>serviceRegister</code> 配置节点或不要配置任何信息。</p> <h2 id="最后">最后</h2> <p>✨✨✨Github地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/dotnetcore/AgileConfig"  target="_blank" rel="nofollow">https://github.com/dotnetcore/AgileConfig</a>  开源不易，欢迎star✨✨✨<br /> ✨✨✨Gitee地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/kklldog/AgileConfig"  target="_blank" rel="nofollow">https://gitee.com/kklldog/AgileConfig</a> ✨✨✨</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69985.htm">北京宠物医院价格表（北京宠物医院价格表图片）</a></p>
+                                        <p>下一个：<a href="/news/article-70626.htm">站在巨人的肩膀上重新审视C# Span&lt;T&gt;数据结构_在线工具</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-64907.htm" title="开一家宠物零食店 开一家宠物零食店 需要具备什么条件">开一家宠物零食店 开一家宠物零食店 需要具备什么条件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-v2ray.htm" title="日本VPN | 3月6日20.5M/S|免费Clash/SSR/V2ray/Shadowrocket免费节点订阅分享">日本VPN | 3月6日20.5M/S|免费Clash/SSR/V2ray/Shadowrocket免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-69326.htm" title="vue跳转方式及传参 (包括打开新窗口)">vue跳转方式及传参 (包括打开新窗口)</a></li>
+                        <li class="py-2"><a href="/news/article-69984.htm" title="详解盒子模型和div布局">详解盒子模型和div布局</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-free-v2ray.htm" title="日本VPN | 3月1日22.7M/S|免费Shadowrocket/Clash/V2ray/SSR免费节点订阅分享">日本VPN | 3月1日22.7M/S|免费Shadowrocket/Clash/V2ray/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-70625.htm" title="AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现">AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现</a></li>
+                        <li class="py-2"><a href="/news/article-69327.htm" title="给动物打的针叫什么名字（给动物打针的地方叫什么）">给动物打的针叫什么名字（给动物打针的地方叫什么）</a></li>
+                        <li class="py-2"><a href="/news/article-64307.htm" title="宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）">宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）</a></li>
+                        <li class="py-2"><a href="/news/article-68679.htm" title="动物医院实践心得2000字左右怎么写 动物医院实践心得2000字左右怎么写的">动物医院实践心得2000字左右怎么写 动物医院实践心得2000字左右怎么写的</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-node-subscribe-links.htm" title="日本VPN | 3月4日19.2M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享">日本VPN | 3月4日19.2M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
