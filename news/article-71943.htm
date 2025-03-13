@@ -1,0 +1,209 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-71943.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pandas 如何处理超大规模数据</title>
+        <meta name="description" content="作者&nbsp;|&nbsp;Sara&nbsp;A.&nbsp;Metwalli 译者&nbsp;|&nbsp;盖磊 策划&nbsp;|&nbsp;陈思  处理大规模数据集时常是棘手的事情，尤其在内" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-71943.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="Pandas 如何处理超大规模数据" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/dee0e752086d39122f7d57358efedbda.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:06:24" />
+    <meta property="og:updated_time" content="2025-03-12T06:06:24" />
+        <meta property="og:description" content="作者&nbsp;|&nbsp;Sara&nbsp;A.&nbsp;Metwalli 译者&nbsp;|&nbsp;盖磊 策划&nbsp;|&nbsp;陈思  处理大规模数据集时常是棘手的事情，尤其在内" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Pandas 如何处理超大规模数据">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">Pandas 如何处理超大规模数据</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="js_content"> <blockquote> <p>作者&nbsp;|&nbsp;Sara&nbsp;A.&nbsp;Metwalli 译者&nbsp;|&nbsp;盖磊 策划&nbsp;|&nbsp;陈思</p> </blockquote> <p><strong>处理大规模数据集时常是棘手的事情，尤其在内存无法完全加载数据的情况下。在资源受限的情况下，可以使用 Python Pandas 提供的一些功能，降低加载数据集的内存占用。可用技术包括压缩、索引和数据分块。</strong></p> <p>在上述过程中需要解决一些问题，其中之一就是数据量过大。如果数据量超出本机内存的容量，项目执行就会产生问题。</p> <p>对此有哪些解决方案？</p> <p>有多种解决数据量过大问题的方法。它们或是消耗时间，或是需要增加投资。</p> <p style="text-align: center"> <strong>可能的解决方案</strong> </p> <ol> <li> <p>投资解决：新购有能力处理整个数据集，具有更强 CPU 和更大内存的计算机。或是去租用云服务或虚拟内存，创建处理工作负载的集群。</p> </li> <li> <p>耗时解决：如果内存不足以处理整个数据集，而硬盘的容量要远大于内存，此时可考虑使用硬盘存储数据。但使用硬盘管理数据会大大降低处理性能，即便是 SSD 也要比内存慢很多。</p> </li> </ol> <p>只要资源允许，这两种解决方法均可行。如果项目资金充裕，或是不惜任何时间代价，那么上述两种方法是最简单也是最直接的解决方案。</p> <p>但如果情况并非如此呢？也许你的资金有限，或是数据集过大，从磁盘加载将增加 5~6 倍甚至更多的处理时间。是否有无需额外资金投入或时间开销的大数据解决方案呢？</p> <p>这个问题正中我的下怀。</p> <p>有多种技术可用于大数据处理，它们无需额外付出投资，也不会耗费大量加载的时间。本文将介绍其中三种使用 Pandas 处理大规模数据集的技术。</p> <p style="text-align: center"><strong>压&nbsp; 缩 </strong></p> <p>第一种技术是数据压缩。压缩并非指将数据打包为 ZIP 文件，而是以压缩格式在内存中存储数据。</p> <p>换句话说，数据压缩就是一种使用更少内存表示数据的方法。数据压缩有两种类型，即无损压缩和有损压缩。这两种类型只影响数据的加载，不会影响到处理代码。</p> <p style="text-align: center"> <strong>无损压缩</strong> </p> <p>无损压缩不会对数据造成任何损失，即原始数据和压缩后的数据在语义上保持不变。执行无损压缩有三种方式。在下文中，将使用美国按州统计的新冠病毒病例数据集依次介绍。</p> <ul> <li> <p>加载特定的数据列</p> </li> </ul> <p>例子中所使用的数据集具有如下结构：</p> <pre class="has"><code class="language-go">import pandas as pd data = pd.read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv") data.sample(10)</code></pre> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/1819d88c625b2b58966da0c07aa8208a.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>加载整个数据集需要占用 111MB 内存！</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/c3cc453732f6a5d9141e912108525d04.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>如果我们只需要数据集中的两列，即州名和病例数，那么为什么要加载整个数据集呢？加载所需的两列数据只需 36MB，可降低内存使用 32%。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/e35b4fd18c05f8b056168868369c7e21.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>使用 Pandas 加载所需数据列的代码如下：</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/4ee007f80abf5590863f56fcb3cce2fd.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>本节使用的代码片段如下：</p> <pre class="has"><code class="language-go"># 加载所需软件库 Import needed library import pandas as pd # 数据集 csv = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv" # 加载整个数据集 data = pd.read_csv(csv) data.info(verbose=False, memory_usage="deep") # 创建数据子集 df = data[["county", "cases"]] df.info(verbose=False, memory_usage="deep") # 加速所需的两列数据 df_2col = pd.read_csv(csv , usecols=["county", "cases"]) df_2col.info(verbose=False, memory_usage="deep")</code></pre> <p>代码地址：</p> <p style="text-align: left"><em>https://gist.github.com/SaraM92/3ba6cac1801b20f6de1ef3cc4a18c843#file-column_selecting-py</em></p> <ul> <li> <p>操作数据类型</p> </li> </ul> <p>另一个降低数据内存使用量的方法是截取数值项。例如将 CSV 加载到 DataFrame，如果文件中包含数值，那么一个数值就需要 64 个字节存储。但可通过使用 int 格式截取数值以节省内存。</p> <ul> <li> <p>int8 存储值的范围是 -128 到 127；</p> </li> <li> <p>int16 存储值的范围是 -32768 到 32767；</p> </li> <li> <p>int64 存储值的范围是 -9223372036854775808 到 9223372036854775807。</p> </li> </ul> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/ca10e4294203cbcd40cfb8603baa5323.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>如果可预先确定数值不大于 32767，那么就可以使用 int16 或 int32 类型，该列的内存占用能降低 75%。</p> <p>假定每个州的病例数不超过 32767（虽然现实中并非如此），那么就可截取该列为 int16 类型而非 int64。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/f7781c8757b1bacfab9d0e11439ee9e2.jpg" alt="Pandas 如何处理超大规模数据"/></p> <ul> <li> <p>稀疏列</p> </li> </ul> <p>如果数据集的一或多个列中具有大量的 NaN 空值，那么可以使用 稀疏列表示 降低内存使用，以免空值耗费内存。</p> <p>假定州名这一列存在一些空值，我们需要跳过所有包含空值的行。该需求可使用 pandas.sparse 轻松实现（译者注：原文使用 Sparse Series，但在 Pandas 1.0.0 中已经移除了 SparseSeries）。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/f7781c8757b1bacfab9d0e11439ee9e2.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p style="text-align: center"> <strong>有损压缩</strong> </p> <p>如果无损压缩并不满足需求，还需要进一步压缩，那么应该如何做？这时可使用有损压缩，权衡内存占用而牺牲数据百分之百的准确性。</p> <p>有损压缩有两种方式，即修改数值和抽样。</p> <ul> <li> <p>修改数值：有时并不需要数值保留全部精度，这时可以将 int64 截取为 int32 甚至是 int16。</p> </li> <li> <p>抽样：如果需要确认某些州的新冠病例数要高于其它州，可以抽样部分州的数据，查看哪些州具有更多的病例。这种做法是一种有损压缩，因为其中并未考虑到所有的数据行。</p> </li> </ul> <p style="text-align: center"> <strong>第二种技术：数据分块（chunking）</strong> </p> <p>另一个处理大规模数据集的方法是数据分块。将大规模数据切分为多个小分块，进而对各个分块分别处理。在处理完所有分块后，可以比较结果并给出最终结论。</p> <p>本文使用的数据集中包含了 1923 行数据。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/d1ad51da33f494e22105b336282961bc.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>假定我们需要找出具有最多病例的州，那么可以将数据集切分为每块 100 行数据，分别处理每个数据块，从这各个小结果中获取最大值。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/3b108e863e28dc27d793de062d9d1fa8.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>本节代码片段如下：</p> <pre class="has"><code class="language-go"># 导入所需软件库 import pandas as pd # 数据集 csv = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv" # 循环处理每个数据块，获取每个数据块中的最大值 result = {} for chunk in pd.read_csv(csv, chunksize=100): max_case = chunk["cases"].max() max_case_county = chunk.loc[chunk[ cases ] == max_case,  county ].iloc[0] result[max_case_county] = max_case # 给出结果 print(max(result, key=result.get) , result[max(result, key=result.get)])</code></pre> <p>代码地址：</p> <p><em>https://gist.github.com/SaraM92/808ed30694601e5eada5e283b2275ed7#file-chuncking-py</em></p> <p style="text-align: center"> <strong>第三种方法：索引 </strong></p> <p>数据分块非常适用于数据集仅加载一次的情况。但如果需要多次加载数据集，那么可以使用索引技术。</p> <p>索引可理解为一本书的目录。无需读完整本书就可以获取所需得信息。</p> <p>例如，分块技术非常适用于获取指定州的病例数。编写如下的简单函数，就能实现这一功能。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/f4d777c6f0e1580270120ba2827f6854.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p style="text-align: center"> <strong>索引 vs 分块</strong> </p> <p>分块需读取所有数据，而索引只需读取部分数据。</p> <p>上面的函数加载了每个分块中的所有行，但我们只关心其中的一个州，这导致大量的额外开销。可使用 Pandas 的数据库操作，例如简单的做法是使用 SQLite 数据库。</p> <p>首先，需要将 DataFrame 加载到 SQLite 数据库，代码如下：</p> <pre class="has"><code class="language-go">import sqlite3 csv = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv" # 创建新的数据库文件 db = sqlite3.connect("cases.sqlite") # 按块加载 CSV 文件 for c in pd.read_csv(csv, chunksize=100): # 将所有数据行加载到新的数据库表中 c.to_sql("cases", db, if_exists="append") # 为“state”列添加索引 db.execute("CREATE INDEX state ON cases(state)") db.close()</code></pre> <p>代码地址：</p> <p style="text-align: left"><em>https://gist.github.com/SaraM92/5b445d5b56be2d349cdfa988204ff5f3#file-load_into_db-py</em></p> <p>为使用数据库，下面需要重写 get_state_info 函数。</p> <p style="text-align: center"><img decoding="async" src="http://img.555519.xyz/uploads/20221230/d87bc6a29b430441e03c98a6754e1800.jpg" alt="Pandas 如何处理超大规模数据"/></p> <p>这样可降低内存占用 50%。</p> <p style="text-align: center"> <strong>小&nbsp; 结</strong> </p> <p>处理大规模数据集时常是棘手的事情，尤其在内存无法完全加载数据的情况下。一些解决方案或是耗时，或是耗费财力。毕竟增加资源是最简单直接的解决方案。</p> <p>但是在资源受限的情况下，可以使用 Pandas 提供的一些功能，降低加载数据集的内存占用。其中的可用技术包括压缩、索引和数据分块。</p> <p style="text-align: center">&lt; END &gt;</p> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71286.htm">厦门市宠物领养网 厦门市宠物领养网点</a></p>
+                                        <p>下一个：<a href="/news/article-71944.htm">一片枫叶还能说什么量词呢怎么写（一片枫叶还有一什么枫叶）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-66152.htm" title="佳雯宠物医院几点开门营业的（佳雯宠物医院总院投诉电话）">佳雯宠物医院几点开门营业的（佳雯宠物医院总院投诉电话）</a></li>
+                        <li class="py-2"><a href="/news/article-72603.htm" title="git语法_在git-pandas中引入统一的glob语法">git语法_在git-pandas中引入统一的glob语法</a></li>
+                        <li class="py-2"><a href="/news/article-67410.htm" title="python PIL Image 图像处理基本操作实例_python">python PIL Image 图像处理基本操作实例_python</a></li>
+                        <li class="py-2"><a href="/news/article-63684.htm" title="动物医院儿童画 动物医院怎么画">动物医院儿童画 动物医院怎么画</a></li>
+                        <li class="py-2"><a href="/news/article-64308.htm" title="做宠物手工零食赚钱吗（做宠物手工零食赚钱吗）">做宠物手工零食赚钱吗（做宠物手工零食赚钱吗）</a></li>
+                        <li class="py-2"><a href="/news/article-69985.htm" title="北京宠物医院价格表（北京宠物医院价格表图片）">北京宠物医院价格表（北京宠物医院价格表图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-v2ray.htm" title="日本VPN | 3月7日20.1M/S|免费V2ray/Shadowrocket/Clash/SSR免费节点订阅分享">日本VPN | 3月7日20.1M/S|免费V2ray/Shadowrocket/Clash/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-71944.htm" title="一片枫叶还能说什么量词呢怎么写（一片枫叶还有一什么枫叶）">一片枫叶还能说什么量词呢怎么写（一片枫叶还有一什么枫叶）</a></li>
+                        <li class="py-2"><a href="/news/article-71285.htm" title="宠物医师资格证报考条件年龄限制（宠物医师资格证报考条件年龄限制是多少）">宠物医师资格证报考条件年龄限制（宠物医师资格证报考条件年龄限制是多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-v2ray.htm" title="日本VPN | 3月2日21.1M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享">日本VPN | 3月2日21.1M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
