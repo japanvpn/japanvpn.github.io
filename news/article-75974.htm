@@ -1,0 +1,208 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-75974.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue 详情页返回列表，过滤查询条件保留</title>
+        <meta name="description" content="在列表页进行的条件查询出来的数据，点击查看详情之后，再返回，之前的查询条件会清空，如何不清空？   在点击查看的时候，保留查询的条件，等返回的时候，把条件给查询框中的值。这个地方多出用到，所有需要采用" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-75974.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="vue 详情页返回列表，过滤查询条件保留" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/a42abe912f6a5552212146d5f98525bb.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:10:54" />
+    <meta property="og:updated_time" content="2025-03-18T06:10:54" />
+        <meta property="og:description" content="在列表页进行的条件查询出来的数据，点击查看详情之后，再返回，之前的查询条件会清空，如何不清空？   在点击查看的时候，保留查询的条件，等返回的时候，把条件给查询框中的值。这个地方多出用到，所有需要采用" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue 详情页返回列表，过滤查询条件保留">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">vue 详情页返回列表，过滤查询条件保留</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <h2><a id="_1" rel="nofollow"></a><code>在列表页进行的条件查询出来的数据，点击查看详情之后，再返回，之前的查询条件会清空，如何不清空？</code></h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/0b266af80f95ca519c71c4097241a5b6.jpg" alt="vue 详情页返回列表，过滤查询条件保留"></p> </h1> <p><code>在点击查看的时候，保留查询的条件，等返回的时候，把条件给查询框中的值。这个地方多出用到，所有需要采用vuex，这样更方便。。。每个页面在离开之前，保留查询条件在vuex中，从详情页回来的时候，再把查询条件给赋值到input中</code></p> <p>vuex中的写法：这个项目中的vuex是一个modules，在modules中新建文件。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/f6047e0ccdafecfedf10c0f3557de73b.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /> 引入到index中注册全局的store<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/857496cd827c0c6d98868c6230e0516d.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /> 列表中这样写：<br /> 1.点击查询的时候，设置isFilters为ture，<br /> 2.根据查询的条件，点击查看的时候，触发vuex的存储事件，存查询的参数到vuex。<br /> 3.从详情返回列表的时候，把vuex中的参数给赋值到列表上的查询条件框中。<br /> 4.在列表页上，加上一个混入的方法。<br /> 5.点击重置的时候，清空vuex中的值。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/bd0bf81df4541b4590fe5dadf7edcf41.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/e28e4828e4a0df8502e0e8823957d44e.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /> 混入的代码如下：（单独的文件）</p> <pre><code>// 用来判断是否是从详细页过来的路径 const filterParamsMixin = {   beforeRouteEnter(to, from, next) {     //在路由加载进入之间，如果不是从当前详情页返回进入列表页的话，则将缓存中的pageNum和pageSize清除     const toFullPath = to.fullPath       .split('/')       .filter((v, i) =&gt; i &lt; 3)       .join('')     const fromFullPath = from.fullPath       .split('/')       .filter((v, i) =&gt; i &lt; 3)       .join('')     console.log(toFullPath)     console.log(fromFullPath)     if (toFullPath !== fromFullPath) {       // sessionStorage.pageNum = ''       // sessionStorage.pageSize = ''       store.dispatch('setChangeFilter', {})     }     next()   }, }</code></pre> <p>列表页代码：</p> <pre><code class="prism language-c"><span class="token comment">// 当路由离开列表页之前</span><span class="token function">beforeRouteLeave</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 当to的路由为详情页面时且isFilters为true（列表页面进行了筛选）时触发</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token operator">=</span><span class="token char">'inputDetail'</span><span class="token operator">||</span> to<span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token operator">=</span><span class="token char">'input'</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span> this<span class="token punctuation">.</span>isFilters<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 将筛选项赋值给changeFilter</span>       this<span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token char">'setChangeFilter'</span><span class="token punctuation">,</span> this<span class="token punctuation">.</span>form<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">// 当路由进入列表页之前</span><span class="token function">beforeRouteEnter</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//当from的路由为详情页面时触发</span><span class="token keyword">if</span><span class="token punctuation">(</span>from<span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token operator">=</span><span class="token char">'inputDetail'</span><span class="token operator">||</span> from<span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token operator">=</span><span class="token char">'input'</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span>_modules<span class="token punctuation">.</span>root<span class="token punctuation">.</span>state<span class="token punctuation">.</span>filterParams<span class="token punctuation">.</span>changeFilter<span class="token operator">!=</span><span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 把changeFilter值赋给当前筛选项的对象</span><span class="token comment">// vm.form = vm.$store.state.changeFilter</span>           vm<span class="token punctuation">.</span>form<span class="token operator">=</span> vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span>_modules<span class="token punctuation">.</span>root<span class="token punctuation">.</span>state<span class="token punctuation">.</span>filterParams<span class="token punctuation">.</span>changeFilter<span class="token comment">// created会在next之前执行。所以获取到筛选数据，可以在这里进行数据的初始化操作</span>           vm<span class="token punctuation">.</span><span class="token function">initData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 如果不是从详情页来的，就直接初始化</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>         vm<span class="token punctuation">.</span><span class="token function">initData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token comment">// beforeRouteEnter中不能直接获得this，需要 next ((vm) =&gt;{ vm.$stroe.state.changeFilter })这样获取，</span><span class="token comment">// 而且next里的方法要在create之后执行</span><span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre> <p>点击重置，清空vuex中的过滤条件<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/caf97f820de0ef8d71fb505295029bcf.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /> 注意点：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/93d034bbf898519f9e37512b78308680.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /> 这个地方要注意的点：<br /> 1.vuex中的changeFilter的值，我的项目中隐藏的很深。不太好找，需要在调试的时候细心查找。<br /> 2. created会在next（）之前执行。所以要想获取到筛选数据，必须得在这里进行数据的初始化操作。不然在created中初始化，此时的查询条件的筛选数据还没获取到。</p> <p>原来的代码中，详情页面还是要写一下。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/76abb6ffd0db55a11ad1f031a46d9c20.jpg" alt="vue 详情页返回列表，过滤查询条件保留"><br /> 但是太麻烦了，于是同事提供了mixins的方式，就方便了很多。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75973.htm">SpringBoot 使用 Feign进行远程调用、文件上传等操作</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70625.htm" title="AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现">AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现</a></li>
+                        <li class="py-2"><a href="/news/article-75285.htm" title="跳水运动员需要戴泳帽跟泳镜吗?(跳水运动员需要戴泳帽跟泳镜吗女生)">跳水运动员需要戴泳帽跟泳镜吗?(跳水运动员需要戴泳帽跟泳镜吗女生)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-v2ray.htm" title="日本VPN | 3月2日21.1M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享">日本VPN | 3月2日21.1M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-71943.htm" title="Pandas 如何处理超大规模数据">Pandas 如何处理超大规模数据</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-free-v2ray.htm" title="日本VPN | 3月1日22.7M/S|免费Shadowrocket/Clash/V2ray/SSR免费节点订阅分享">日本VPN | 3月1日22.7M/S|免费Shadowrocket/Clash/V2ray/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-72604.htm" title="宠物食品店名称 宠物食品店名称大全">宠物食品店名称 宠物食品店名称大全</a></li>
+                        <li class="py-2"><a href="/news/article-67410.htm" title="python PIL Image 图像处理基本操作实例_python">python PIL Image 图像处理基本操作实例_python</a></li>
+                        <li class="py-2"><a href="/news/article-73935.htm" title="国内动物疫苗龙头企业有哪些（动物疫苗上市a股龙头）">国内动物疫苗龙头企业有哪些（动物疫苗上市a股龙头）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-subscribe-node.htm" title="日本VPN | 3月14日22.9M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享">日本VPN | 3月14日22.9M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-clash-v2ray-ss-ssr.htm" title="日本VPN | 3月10日23M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享">日本VPN | 3月10日23M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
