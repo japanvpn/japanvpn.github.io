@@ -1,0 +1,211 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-96086.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>i2c调试工具分享</title>
+        <meta name="description" content="i2c-tools简介 在嵌入式开发仲，有时候需要确认硬件是否正常连接，设备是否正常工作，设备的地址是多少等等，这里我们就需要使用一个用于测试I2C总线的工具——i2c-tools。 i2c-tool" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-96086.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="i2c调试工具分享" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/a42abe912f6a5552212146d5f98525bb.webp" />
+        <meta property="og:release_date" content="2025-04-15T05:59:16" />
+    <meta property="og:updated_time" content="2025-04-15T05:59:16" />
+        <meta property="og:description" content="i2c-tools简介 在嵌入式开发仲，有时候需要确认硬件是否正常连接，设备是否正常工作，设备的地址是多少等等，这里我们就需要使用一个用于测试I2C总线的工具——i2c-tools。 i2c-tool" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="i2c调试工具分享">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">i2c调试工具分享</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<h2 id="i2c-tools简介">i2c-tools简介</h2> <p>在嵌入式开发仲，有时候需要确认硬件是否正常连接，设备是否正常工作，设备的地址是多少等等，这里我们就需要使用一个用于测试I2C总线的工具——i2c-tools。</p> <p>i2c-tools工具是一个专门调试i2c的，开源，可获取挂载的设备及设备地址，还可以读写I2C设备寄存器。</p> <p>下面我们就对这个工具的安装和使用做个简单介绍。</p> <h2 id="i2c-tools安装">i2c-tools安装</h2> <p>下载地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mirrors.edge.kernel.org/pub/software/utils/i2c-tools/%E3%80%82%E6%9C%AC%E6%96%87%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF4.3%E7%89%88%E6%9C%AC%E3%80%82"  target="_blank" rel="nofollow">https://mirrors.edge.kernel.org/pub/software/utils/i2c-tools/。本文使用的是4.3版本。</a></p> <h3 id="解压">解压</h3> <p>下载完成后，放到linux环境下解压。</p> <pre><code class="language-bash"> tar -zxvf i2c-tools-4.3.tar.gz   cd i2c-tools-4.3</code></pre> <h3 id="编译">编译</h3> <p>使用以下命令进行编译</p> <pre><code>make CC=arm-linux-gnueabihf-gcc   USE_STATIC_LIB=1</code></pre> <p>USE_STATIC_LIB 的意思是使用静态编译。编译完成后，会在tools目录下产生i2cdetect，i2cdump，i2cget，i2cset，i2ctransfer五个产物。将这些可执行文件拷贝到设备上。</p> <blockquote> <p>不加 USE_STATIC_LIB 编译选项，会使用动态链接的方式编译。编译完成后需要拷贝i2c-tools-4.3/lib 目录下的libi2c.so.0动态库到设备上的/usr/bin 目录下。</p> </blockquote> <h2 id="i2c-tools使用方法">i2c-tools使用方法</h2> <h3 id="i2cdetect">i2cdetect</h3> <p>i2cdetect用來列举I2C bus和上面所有的设备，可接受的参数有</p> <pre><code class="language-bash">Usage: i2cdetect [-y] [-a] [-q|-r] I2CBUS [FIRST LAST]        i2cdetect -F I2CBUS        i2cdetect -l   I2CBUS is an integer or an I2C bus name   If provided, FIRST and LAST limit the probing range.</code></pre> <p>-V：输出当前版本号</p> <pre><code class="language-bash">debian@npi:/mnt/mnt$ ./i2cdetect -V i2cdetect version 4.3</code></pre> <p>-l：输出所有 i2c 总线，如下总线编号有twi1和twi2，或者1和2</p> <pre><code class="language-c">debian@npi:/mnt/mnt$ ./i2cdetect -l i2c-0   unknown         21a0000.i2c                             N/A i2c-1   unknown         21a4000.i2c                             N/A debian@npi:/mnt/mnt$ ls -l /dev/i2c-* crw------- 1 root root 89, 0 Mar 19 09:42 /dev/i2c-0 crw------- 1 root root 89, 1 Mar 19 09:42 /dev/i2c-1</code></pre> <p>I2CBUS：i2c总线编号<br /> -F：此 i2c 支持的功能</p> <pre><code class="language-bash">root@npi:/mnt/mnt# ./i2cdetect -F 1 Functionalities implemented by /dev/i2c-1: I2C                              yes SMBus Quick Command              yes SMBus Send Byte                  yes SMBus Receive Byte               yes SMBus Write Byte                 yes SMBus Read Byte                  yes SMBus Write Word                 yes SMBus Read Word                  yes SMBus Process Call               yes SMBus Block Write                yes SMBus Block Read                 yes SMBus Block Process Call         no SMBus PEC                        yes I2C Block Write                  yes I2C Block Read                   yes root@npi:/mnt/mnt#</code></pre> <p>-y：指令执行自动yes，否则会提示确认执行Continue? [Y/n] Y，不加参数y会有很多执行提示，可以帮助判断</p> <p>-a：输出总线上所有地址（00-7f），没有 -a，只显示 08-77，UU 表示该设备在驱动中已使用。</p> <p>如下0x1a,0x39的地址正在被使用。</p> <pre><code class="language-bash">root@npi:/mnt/mnt# ./i2cdetect -a 1 WARNING! This program can confuse your I2C bus, cause data loss and worse! I will probe file /dev/i2c-1. I will probe address range 0x00-0x7f. Continue? [Y/n] y      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f 00: 00 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  10: -- -- -- -- -- -- -- -- -- -- UU -- -- -- -- --  20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  30: -- -- -- -- -- -- -- -- -- UU -- -- -- -- -- --  40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  60: 60 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  70: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  root@npi:/mnt/mnt# ./i2cdetect -y -a 1      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f 00: 00 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  10: -- -- -- -- -- -- -- -- -- -- UU -- -- -- -- --  20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  30: -- -- -- -- -- -- -- -- -- UU -- -- -- -- -- --  40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  60: 60 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  70: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  root@npi:/mnt/mnt#</code></pre> <h3 id="i2cdump">i2cdump</h3> <p>i2cdump读取设备上所有寄存器的值，可接受的参数有</p> <pre><code class="language-bash">Usage: i2cdump [-f] [-y] [-r first-last] [-a] I2CBUS ADDRESS [MODE [BANK [BANKREG]]]   I2CBUS is an integer or an I2C bus name   ADDRESS is an integer (0x03 - 0x77, or 0x00 - 0x7f if -a is given)   MODE is one of:     b (byte, default)     w (word)     W (word on even register addresses)     s (SMBus block)     i (I2C block)     c (consecutive byte)     Append p for SMBus PEC</code></pre> <p>-V：输出当前版本号</p> <p>-f：强制使用此设备地址，即使此设备地址已经被使用；若不添加此参数，地址可能写失败</p> <p>-y：指令执行自动 yes，否则会提示确认执行Continue? [Y/n] Y，不加参数y会有很多执行提示，可以帮助判断</p> <p>-r：读取从 first-last 之间的寄存器值</p> <p>-a：读取0x00-0xff范围的地址</p> <p>I2CBUS：i2c总线编号</p> <p>ADDRESS：设备地址，建议使用十六进制</p> <p>MODE：数据长度类型</p> <pre><code class="language-bash">root@npi:/mnt/mnt# ./i2cdump -f -y -a 1 0x39 No size specified (using byte-data access)      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef 00: 00 00 00 00 00 00 00 00 70 00 00 00 00 00 00 00    ........p....... 10: 00 00 00 00 00 00 00 00 00 00 10 b0 02 03 02 00    ..........?????. 20: 95 00 00 00 00 00 40 00 00 00 00 fb ff dd c4 00    ?.....@....?.??. 30: 00 00 00 00 00 00 90 22 a0 00 00 00 01 10 00 00    ......?"?...??.. 40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ 50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ 60: 04 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ??.............. 70: 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00    .............?.. 80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ 90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ b0: 00 00 00 00 00 00 00 00 00 77 14 76 01 00 01 00    .........w?v?.?. c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................  # 只读取0x50-0x7f寄存器范围的值 root@npi:/mnt/mnt# ./i2cdump -f -y -r 0x50-0x7f 1 0x39 No size specified (using byte-data access)      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef 50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................ 60: 04 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ??.............. 70: 00 00 00 00 00 00 00 00 00 00 00 00 00 03 00 00    .............?.. root@npi:/mnt/mnt#</code></pre> <p>通过读取i2c设备寄存器的值与芯片手册的值进行比对，确认我们配置的是否正确。</p> <h3 id="i2cget">i2cget</h3> <p>i2cget读取设备上寄存器的值，可接受的参数有</p> <pre><code class="language-bash">Usage: i2cget [-f] [-y] [-a] I2CBUS CHIP-ADDRESS [DATA-ADDRESS [MODE]]   I2CBUS is an integer or an I2C bus name   ADDRESS is an integer (0x03 - 0x77, or 0x00 - 0x7f if -a is given)   MODE is one of:     b (read byte data, default)     w (read word data)     c (write byte/read byte)     Append p for SMBus PEC</code></pre> <p>I2CBUS：i2c总线编号</p> <p>CHIP-ADDRESS：设备地址</p> <p>DATA-ADDRESS：要读取的寄存器地址</p> <p>MODE：数据长度类型</p> <pre><code class="language-bash"># 0x39设备地址，0x04要读取的寄存器 root@npi:/mnt/mnt# ./i2cget -f -y 1 0x39 0x04 0x03</code></pre> <h3 id="i2cset">i2cset</h3> <p>i2cset设置设备上寄存器的值，可接受的参数有</p> <pre><code class="language-bash">Usage: i2cset [-f] [-y] [-m MASK] [-r] [-a] I2CBUS CHIP-ADDRESS DATA-ADDRESS [VALUE] ... [MODE]   I2CBUS is an integer or an I2C bus name   ADDRESS is an integer (0x03 - 0x77, or 0x00 - 0x7f if -a is given)   MODE is one of:     c (byte, no value)     b (byte data, default)     w (word data)     i (I2C block data)     s (SMBus block data)     Append p for SMBus PEC</code></pre> <p>I2CBUS：i2c总线编号</p> <p>CHIP-ADDRESS：设备地址</p> <p>DATA-ADDRESS：要写入的寄存器地址</p> <p>VALUE：要写入的值</p> <p>MODE：数据长度类型</p> <pre><code class="language-bash">root@npi:/mnt/mnt# ./i2cset -f -m 0xff -r 1 0x39 0x04 0x03 WARNING! This program can confuse your I2C bus, cause data loss and worse! I will write to device file /dev/i2c-1, chip address 0x39, data address 0x04, data 0x03 (masked), mode byte. Continue? [Y/n] y Old value 0x00, write mask 0xff, will write 0x03 Continue? [Y/n] y Value 0x03 written, readback matched root@npi:/mnt/mnt#</code></pre> <p>把写入寄存器的值读出来。确认与我们写入的值相同。</p> <pre><code class="language-bash">root@npi:/mnt/mnt# ./i2cdump -f -y -r 0x00-0x0f 1 0x39 No size specified (using byte-data access)      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef 00: 00 00 00 00 03 00 00 00 70 00 00 00 00 00 00 00    ....?...p....... root@npi:/mnt/mnt#</code></pre> <h3 id="i2ctransfer">i2ctransfer</h3> <p>i2ctransfer通过一次传输发送用户定义的I2C消息，用于创建I2C消息并将其作为一次传输合并发送。</p> <pre><code class="language-bash">Usage: i2ctransfer [-f] [-y] [-v] [-V] [-a] I2CBUS DESC [DATA] [DESC [DATA]]...   I2CBUS is an integer or an I2C bus name   DESC describes the transfer in the form: {r|w}LENGTH[@address]     1) read/write-flag 2) LENGTH (range 0-65535) 3) I2C address (use last one if omitted)   DATA are LENGTH bytes for a write message. They can be shortened by a suffix:     = (keep value constant until LENGTH)     + (increase value by 1 until LENGTH)     - (decrease value by 1 until LENGTH)     p (use pseudo random generator until LENGTH with value as seed)  Example (bus 0, read 8 byte at offset 0x64 from EEPROM at 0x50):   # i2ctransfer 0 w1@0x50 0x64 r8 Example (same EEPROM, at offset 0x42 write 0xff 0xfe ... 0xf0):   # i2ctransfer 0 w17@0x50 0x42 0xff-</code></pre> <p>I2CBUS：i2c总线编号</p> <p>DESC：<code>{r | w}</code>&lt;消息长度&gt;[@设备地址]</p> <ul> <li> <p><code>{r | w}</code>指定消息是读还是写</p> </li> <li> <p>&lt;消息长度&gt;指定在此消息中读取或写入的字节数。它被解析为一个无符号的16位整数</p> </li> <li> <p>[@设备地址]指定此消息要访问的芯片的7位地址，并且是整数。</p> </li> </ul> <pre><code class="language-bash">#参数2为i2c2，w2表示写两个字节，@0x39为i2c设备（注意要7位地址），0x02 0xd3 为高低位地址，r1为读取的数据是一个byte。 root@npi:/mnt/mnt# ./i2ctransfer  -f -y 1 w2@0x60 0x02 0xd3 r1 0x00</code></pre> <h2 id="总结">总结</h2> <p>本文只是抛砖引玉，i2c-tools还有更多的使用方法，需要大家在实际工作中去探索。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95320.htm">k8s &#8211; 控制器（deployment）</a></p>
+                                        <p>下一个：<a href="/news/article-96087.htm">农历1970年7月17日命运（1970年7月17农历是什么时候）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-87895.htm" title="MySQL 5.7的Homebrew安装 &#8211; MacOS">MySQL 5.7的Homebrew安装 &#8211; MacOS</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-node-subscribe-links.htm" title="日本VPN | 3月12日23M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享">日本VPN | 3月12日23M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-node-share-links.htm" title="日本VPN | 3月21日20.8M/S|免费Clash/V2ray/SSR/Shadowrocket免费节点订阅分享">日本VPN | 3月21日20.8M/S|免费Clash/V2ray/SSR/Shadowrocket免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-85727.htm" title="动物疫苗知识培训总结（动物疫苗管理工作总结）">动物疫苗知识培训总结（动物疫苗管理工作总结）</a></li>
+                        <li class="py-2"><a href="/news/article-96086.htm" title="i2c调试工具分享">i2c调试工具分享</a></li>
+                        <li class="py-2"><a href="/news/article-82150.htm" title="附近免费领养狗猫的地方（哪有领养狗狗的地方）">附近免费领养狗猫的地方（哪有领养狗狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-82864.htm" title="PHP如何在同一文件中定义多个命名空间">PHP如何在同一文件中定义多个命名空间</a></li>
+                        <li class="py-2"><a href="/news/article-79388.htm" title="宠物粮好卖吗（宠物粮市场前景怎么样）">宠物粮好卖吗（宠物粮市场前景怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-80080.htm" title="动物疫苗行业的毛利润率是多少啊（动物疫苗赚钱吗）">动物疫苗行业的毛利润率是多少啊（动物疫苗赚钱吗）</a></li>
+                        <li class="py-2"><a href="/news/article-95320.htm" title="k8s &#8211; 控制器（deployment）">k8s &#8211; 控制器（deployment）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">43</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
