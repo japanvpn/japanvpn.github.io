@@ -1,0 +1,214 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-104339.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具</title>
+        <meta name="description" content="一、表空间 在InnoDB中我们创建的表还有对应的索引数据都存储在扩展名为.ibd 的文件中，这个文件路径可以先通过查mysql变量datadir来得到，然后进入对应的数据库名目录，会看到很多ibd，" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-104339.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/e3259323dd873cdc460cb5bbd59200ae.webp" />
+        <meta property="og:release_date" content="2025-04-26T07:38:05" />
+    <meta property="og:updated_time" content="2025-04-26T07:38:05" />
+        <meta property="og:description" content="一、表空间 在InnoDB中我们创建的表还有对应的索引数据都存储在扩展名为.ibd 的文件中，这个文件路径可以先通过查mysql变量datadir来得到，然后进入对应的数据库名目录，会看到很多ibd，" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div> <div class="article-content" data-v-3fbea7fe=""> <div class="markdown-body"> <h2 data-id="heading-0"><img decoding="async" src="https://img2022.cnblogs.com/blog/1238581/202205/1238581-20220502165340601-106486322.jpg" alt="InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具"></h2> <h2 data-id="heading-0">一、表空间</h2> <p data-id="heading-0">在InnoDB中我们创建的表还有对应的索引数据都存储在扩展名为.ibd 的文件中，这个文件路径可以先通过查mysql变量<code>datadir</code>来得到，然后进入对应的数据库名目录，会看到很多ibd，文件名就是表名，这里有两种类型的表空间，<span style="color: rgba(255, 0, 0, 1)">共享表空间</span>（或者叫系统表空间）和<span style="color: rgba(255, 0, 0, 1)">独立表空间</span>文件。</p> <p>对于共享表空间，所有的表数据和相应索引都存放在这里，而独立表空间，就是每个表的数据和索引都存放在一个单独的ibd文件中，在目前的MySQL版本中，默认都是使用的独立表空间。</p> <p>共享表空间文件名可以通过<code>innodb_data_file_path</code>得到，</p> <div class="cnblogs_Highlighter"> <pre class="brush:sql;gutter:true;">mysql&gt; show variables like 'innodb_data_file_path'; +-----------------------+------------------------+ | Variable_name         | Value                  | +-----------------------+------------------------+ | innodb_data_file_path | ibdata1:12M:autoextend | +-----------------------+------------------------+ 1 row in set (0.00 sec)</pre> </div> <p>独立和共享表空间可以通过<code>innodb_file_per_table</code>切换，如果启用了他，那么每张表内的数据就单独放在一个表空间文件中，还需要注意，每个表的表空间只存储数据、索引，其他类的数据，如回滚信息、系统事务信息、二次写缓冲仍存储在原始共享表空间中。</p> <p>下面语句可以查看<code>innodb_file_per_table</code>的状态。</p> <div class="cnblogs_Highlighter"> <pre class="brush:sql;gutter:true;">mysql&gt; show variables like '%innodb_file_per_table'; +-----------------------+-------+ | Variable_name         | Value | +-----------------------+-------+ | innodb_file_per_table | ON    | +-----------------------+-------+ 1 row in set (0.01 sec)</pre> </div> <p>修改<code>innodb_file_per_table</code>状态</p> <div class="cnblogs_Highlighter"> <pre class="brush:sql;gutter:true;">set global innodb_file_per_table=0;</pre> </div> <p>如果在<code>innodb_file_per_table</code>等于0的情况下，也就是OFF关闭情况下，创建的表都会存放的系统共享的表空间中，比如下面的列子。</p> <div class="cnblogs_Highlighter"> <pre class="brush:sql;gutter:true;">1.创建database_1数据库 mysql&gt; create  database database_1; Query OK, 1 row affected (0.02 sec)  2. 当前状态 mysql&gt; show variables like '%innodb_file_per_table'; +-----------------------+-------+ | Variable_name         | Value | +-----------------------+-------+ | innodb_file_per_table | ON    | +-----------------------+-------+ 1 row in set (0.01 sec)  3. 创建表 mysql&gt; create table t1(id int(11)); Query OK, 0 rows affected, 1 warning (0.05 sec)   4. 查看ibd文件 root@hxl-PC:/var/lib/mysql/database_1# ls t1.ibd root@hxl-PC:/var/lib/mysql/database_1#   5. 关闭innodb_file_per_table后在创建表 mysql&gt; set global innodb_file_per_table=0; Query OK, 0 rows affected (0.01 sec)  mysql&gt; create table t2(id int(11)); Query OK, 0 rows affected, 1 warning (0.05 sec) 6. 查看ibd文件 root@hxl-PC:/var/lib/mysql/database_1# ls t1.ibd</pre> </div> <p>可以发现在关闭后，没有创建新的ibd文件。</p> <p><span style="color: rgba(255, 0, 0, 1)">表空间又由段(segment)、区(extent)、页(page)组成</span>，引入一张网络图片。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/ccb362f932704451f14d176a50dbbfe2.jpg" alt="InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具"></p> <h2 data-id="heading-1">二、段</h2> <p>表空间由段组成，他是一个逻辑结构，用来管理物理文件，常见的段有数据段、索引段、回滚段，每个段由N个区和32个零散的页组成。</p> <p><strong>InnoDB默认是基于B+树实现的数据存储。</strong>这里的索引段则是指的B+树的非叶子节点，而数据段则是B+树的叶子节点。而回滚段则指的是回滚数据，事务隔离的MVCC利用了回滚段实现了多版本查询数据。</p> <div></div> <h2 data-id="heading-2">三、区</h2> <p>区是由连续的页组成的空间，无论如何，<span style="color: rgba(255, 0, 0, 1)">每个区的大小都是1MB</span>。为了保证区域内页面的连续性，InnoDB存储引擎一次从磁盘申请4-5个区域。</p> <h2 data-id="heading-3">四、页</h2> <p>页是InnoDB存储引擎磁盘管理的最小单位，<span style="color: rgba(255, 0, 0, 1)">默认16kb</span>，可以通过参数<code>innodb_page_size</code>设置页大小为4K、8K、16K 。</p> <p>默认情况下，InnoDB存储引擎的区大小为1MB，也就是有64个连续页组成，即16*64=1024=1M。</p> <p>InnoDB为了实现不同的目的而设计了很多种页，InnoDB 存储引擎中常见的页面类型有：</p> <ol> <li> <p>数据页</p> </li> <li> <p>undo页面</p> </li> <li> <p>系统页面</p> </li> <li> <p>事物数据页面（交易系统页面）</p> </li> <li> <p>插入缓冲位图页</p> </li> <li> <p>插入缓冲区空闲列表页</p> </li> <li> <p>未压缩的二进制大对象页面</p> </li> <li> <p>压缩二进制大对象页面</p> </li> </ol> <p>可以通过以下命令查看大小。</p> <div class="cnblogs_Highlighter"> <pre class="brush:sql;gutter:true;">mysql&gt; show status like 'innodb_page_size'; +------------------+-------+ | Variable_name    | Value | +------------------+-------+ | Innodb_page_size | 16384 | +------------------+-------+ 1 row in set (0.00 sec)</pre> </div> <p>下面是InnoDB数据页结构，它由七部分组成。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/ed7fbea740394c84af8b68e6a6ec73c8.jpg" alt="InnoDB的逻辑存储结构是什么，表空间组成包括哪些？_在线工具"></p> <table> <thead> <tr> <th>名称</th> <th>作用</th> </tr> </thead> <tbody> <tr> <td>File header</td> <td>记录了页头的一些信息，cheksum、Ppervious和next page的记录</td> </tr> <tr> <td>Page header</td> <td>记录了页的状态信息和存储信息、首个记录的position</td> </tr> <tr> <td>Infimum+ supremum</td> <td>InnoDB每个数据页有两个虚拟行记录，用来限定记录边界</td> </tr> <tr> <td>Row records</td> <td>实际存储的行数据信息</td> </tr> <tr> <td>Free space</td> <td>空闲空间，同样是链表结构</td> </tr> <tr> <td>Page directory</td> <td>存放了记录的相对位置</td> </tr> <tr> <td>File trailer</td> <td>innodb利用它来保证页完整地写入磁盘</td> </tr> </tbody> </table> <h3 data-id="heading-4"></h3> <h2 data-id="heading-4">五、行</h2> <p>InnoDB存储引擎是面向行的，页里面又记录着行记录的信息，也就是数据是按照行存储的。行记录数据又是按照行格式进行存放的。每个页存放的行记录也是有硬性定义的，最多允许存放16KB/2-200行，也就是7992行。</p> <p>InnoDB存储引擎有两种文件格式，一种叫Antelops,另外一种叫Barracuda。</p> <p>在Antelope文件格式下，有compact和redundant两种行记录格式。</p> <p>在Barracuda文件格式下，有compressed和dynamic两种行记录格式。</p> <p>可以通过以下方式查看当前格式，其中Row_format就是对应行格式存储类型。</p> <div class="cnblogs_Highlighter"> <pre class="brush:sql;gutter:true;">mysql&gt; show table status \G; *************************** 1. row ***************************            Name: t1          Engine: InnoDB         Version: 10      Row_format: Dynamic            Rows: 15  Avg_row_length: 1092     Data_length: 16384 Max_data_length: 0    Index_length: 0       Data_free: 0  Auto_increment: NULL     Create_time: 2021-08-24 09:43:29     Update_time: 2021-08-24 14:43:35      Check_time: NULL       Collation: utf8mb4_0900_ai_ci        Checksum: NULL  Create_options:          Comment:</pre> </div> <p>文章资料：</p> </div> </div> </div> <ol> <li><span style="color: rgba(0, 0, 0, 1)">https://www.cnblogs.com/agilestyle/p/11428574.html</span></li> <li><span style="color: rgba(0, 0, 0, 1)">https://juejin.cn/post/6999936914119720996</span></li> <li><span style="color: rgba(0, 0, 0, 1)"><span style="color: rgba(0, 0, 0, 1)">https://time.geekbang.org/column/article/121710</span></span></li> </ol> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-103523.htm">成都市宠物领养中心地址（成都市宠物领养中心地址查询）</a></p>
+                                        <p>下一个：<a href="/news/article-104340.htm">宠物领养免费平台有哪些软件（宠物领养免费平台有哪些软件好）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-87162.htm" title="宠物批发市场哪里便宜点（宠物批发在哪里）">宠物批发市场哪里便宜点（宠物批发在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-v2ray.htm" title="日本VPN | 3月2日21.1M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享">日本VPN | 3月2日21.1M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-75285.htm" title="跳水运动员需要戴泳帽跟泳镜吗?(跳水运动员需要戴泳帽跟泳镜吗女生)">跳水运动员需要戴泳帽跟泳镜吗?(跳水运动员需要戴泳帽跟泳镜吗女生)</a></li>
+                        <li class="py-2"><a href="/news/article-104340.htm" title="宠物领养免费平台有哪些软件（宠物领养免费平台有哪些软件好）">宠物领养免费平台有哪些软件（宠物领养免费平台有哪些软件好）</a></li>
+                        <li class="py-2"><a href="/news/article-85007.htm" title="猫咪三针疫苗叫什么名字啊（猫咪三针疫苗大概多少钱）">猫咪三针疫苗叫什么名字啊（猫咪三针疫苗大概多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-66151.htm" title="芭比堂宠物医院价格表（芭比堂宠物医院百度百科）">芭比堂宠物医院价格表（芭比堂宠物医院百度百科）</a></li>
+                        <li class="py-2"><a href="/news/article-91487.htm" title="宠物回收平台同城可靠吗（宠物回收平台同城可靠吗安全吗）">宠物回收平台同城可靠吗（宠物回收平台同城可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/news/article-101904.htm" title="宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）">宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）</a></li>
+                        <li class="py-2"><a href="/news/article-70625.htm" title="AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现">AgileConfig 1.6.0 发布 &#8211; 支持服务注册与发现</a></li>
+                        <li class="py-2"><a href="/news/article-74619.htm" title="宠物领养什么意思啊（宠物领养须知）">宠物领养什么意思啊（宠物领养须知）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
