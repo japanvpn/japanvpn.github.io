@@ -1,0 +1,213 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-108481.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>rancher安装redis集群</title>
+        <meta name="description" content="基于上一篇：docker安装rancher_RT_0114的博客-CSDN博客 之前也安装过redis集群只不过是用docker单机装的。docker搭建redis集群_RT_0114的博客-CSDN" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-108481.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="rancher安装redis集群" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/3bcf47906ea440473a3bad441178f0e1.webp" />
+        <meta property="og:release_date" content="2025-05-01T09:01:57" />
+    <meta property="og:updated_time" content="2025-05-01T09:01:57" />
+        <meta property="og:description" content="基于上一篇：docker安装rancher_RT_0114的博客-CSDN博客 之前也安装过redis集群只不过是用docker单机装的。docker搭建redis集群_RT_0114的博客-CSDN" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="rancher安装redis集群">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">rancher安装redis集群</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>基于上一篇：docker安装rancher_RT_0114的博客-CSDN博客</p> <p>之前也安装过redis集群只不过是用docker单机装的。docker搭建redis集群_RT_0114的博客-CSDN博客</p> <p>来，记录一下rancher安装redis集群。机器防火墙全部是关闭的。</p> <p>对还是三台机器，master、mode1、node2，master不部署redis只是用来共享redis的配置文件，node1和node2分别部署3台redis共计6台redis。</p> <blockquote> <p>进入master主机创建文件夹：</p> </blockquote> <pre><code class="language-bash">mkdir -p /water/runfile/docker_volume/redis_cluster/7001/data mkdir -p /water/runfile/docker_volume/redis_cluster/7002/data mkdir -p /water/runfile/docker_volume/redis_cluster/7003/data mkdir -p /water/runfile/docker_volume/redis_cluster/7004/data mkdir -p /water/runfile/docker_volume/redis_cluster/7005/data mkdir -p /water/runfile/docker_volume/redis_cluster/7006/data</code></pre> <blockquote> <p>在master上安装nfs：</p> </blockquote> <pre><code>cd /water/runfile/docker_volume/redis_cluster rpc.nfsd 8 rpc.mountd  exportfs -r #使配置生效  exportfs #可以查看到已经ok</code></pre> <blockquote> <p>执行过程：</p> </blockquote> <pre><code class="language-bash">[root@CSS-app-SG1 7006]# cd /water/runfile/docker_volume/redis_cluster [root@CSS-app-SG1 redis_cluster]# exportfs /water/runfile/docker_volume                 172.21.168.195/24 [root@CSS-app-SG1 redis_cluster]#</code></pre> <blockquote> <p>创建配置文件：</p> </blockquote> <pre><code>vi /water/runfile/docker_volume/redis_cluster/7001/redis.conf vi /water/runfile/docker_volume/redis_cluster/7002/redis.conf vi /water/runfile/docker_volume/redis_cluster/7003/redis.conf vi /water/runfile/docker_volume/redis_cluster/7004/redis.conf vi /water/runfile/docker_volume/redis_cluster/7005/redis.conf vi /water/runfile/docker_volume/redis_cluster/7006/redis.conf</code></pre> <blockquote> <p>修改：6个文件只是端口不一样其他都一样</p> </blockquote> <pre><code>#bind 127.0.0.1 port 7001  #端口 cluster-enabled yes #启用集群模式 cluster-config-file /data/nodes.conf cluster-node-timeout 5000 #超时时间 logfile "/data/redis.log" #输出日志 appendonly yes daemonize no #是否后台运行，这里不能改成yes，不然docker运行就关闭了 protected-mode no #非保护模式 pidfile  /var/run/redis.pid</code></pre> <blockquote> <p>在default空间下创建pv</p> </blockquote> <blockquote> <p>nfs-redisclutser-pv<br /> NFS-Share 10<br /> /water/runfile/docker_volume 172.21.168.195<br /> 是否只读：否<br /> 多主机读写</p> </blockquote> <p><img fetchpriority="high" decoding="async" alt="" height="340" src="http://img.555519.xyz/uploads3/20220609/ffa5048c4c4abe2c377d1703330a5385.jpg"></p> <blockquote> <p>过程：</p> </blockquote> <p><img decoding="async" alt="" height="557" src="http://img.555519.xyz/uploads3/20220609/3405d7074d19e948e81cb2645c4550c3.jpg"></p> <blockquote> <p>在default空间下创建pvc</p> </blockquote> <blockquote> <p>工作负载-负载均衡-服务发现-PVC(勾)-流水线<br /> 选择添加pvc<br /> nfs-redisclutser-pvc 命名空间:选择刚创建的redis-cluster<br /> 持久卷(PV) 选择：nfs-redisclutser-pv<br /> 自定义： 多主机读写</p> </blockquote> <p><img decoding="async" alt="" height="336" src="http://img.555519.xyz/uploads3/20220609/6fd99f3f46518f4274ae204af01d4e75.jpg"></p> <blockquote> <p>过程：</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="576" src="http://img.555519.xyz/uploads3/20220609/ce85bee579cf22185400ffa66594da76.jpg"></p> <blockquote> <p>部署redis：先手动拉取redis镜像。</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="503" src="http://img.555519.xyz/uploads3/20220609/84c205976699ec3363a55d0b44be1f0b.jpg"></p> <blockquote> <p>主机调度：指定</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="218" src="http://img.555519.xyz/uploads3/20220609/50fd76573411abbc019fa85760a8977d.jpg"></p> <blockquote> <p>数据卷：pvc里面配置到了/water/runfile/docker_volume因此下面配置的时候只需要配置下级目录即可</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="471" src="http://img.555519.xyz/uploads3/20220609/42e5027e20a423a647683b23793e16b7.jpg"></p> <blockquote> <p>入口/命令：</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="480" src="http://img.555519.xyz/uploads3/20220609/e8c4b817a9af05321d0c3fb69898a34c.jpg"></p> <blockquote> <p>网络：</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="339" src="http://img.555519.xyz/uploads3/20220609/48e3a0db7ed532e94504c88e912b1c28.jpg"></p> <blockquote> <p>点记确定即可。</p> </blockquote> <blockquote> <p>再复制5份，分别把端口和数据卷的端口文件夹改一下，调度的主机也改一下一台机器3台redis。</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="449" src="http://img.555519.xyz/uploads3/20220609/da0e827e780f364d20be2b776900c6ca.jpg"></p> <blockquote> <p>进入任意一台redis：</p> </blockquote> <blockquote> <p>执行：点击yes，完成，3主3从。</p> </blockquote> <pre><code>redis-cli --cluster create 172.21.168.197:7001 172.21.168.197:7002 172.21.168.197:7005 172.21.168.199:7003 172.21.168.199:7004 172.21.168.199:7006 --cluster-replicas 1</code></pre> <blockquote> <p>cluster nodes &nbsp;查看集群节点</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="174" src="http://img.555519.xyz/uploads3/20220609/eea88e8925e9b809b822a6b15604118e.jpg"></p> <blockquote> <p>cluster info:查看集群信息</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="305" src="http://img.555519.xyz/uploads3/20220609/d707e89b832264fb34812152fb5ff0ab.jpg"></p> <blockquote> <p>尝试用一下：就这简单不，搞一遍就会了，没什么难度。</p> </blockquote> <p><img loading="lazy" decoding="async" alt="" height="337" src="http://img.555519.xyz/uploads3/20220609/a8179f2ea3b1be976b668ed1b487bec0.jpg"></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-108476.htm">c# Semaphore（信号量）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-free-node-subscribe.htm" title="日本VPN | 4月3日20.5M/S|免费V2ray/Shadowrocket/SSR/Clash免费节点订阅分享">日本VPN | 4月3日20.5M/S|免费V2ray/Shadowrocket/SSR/Clash免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-91587.htm" title="宠物美容师底薪一般多少钱（宠物美容师工资一般多少钱一个月）">宠物美容师底薪一般多少钱（宠物美容师工资一般多少钱一个月）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-14-node-share.htm" title="日本VPN | 4月14日21.2M/S|免费SSR/Shadowrocket/V2ray/Clash免费节点订阅分享">日本VPN | 4月14日21.2M/S|免费SSR/Shadowrocket/V2ray/Clash免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-97516.htm" title="出售自家金毛（私人出售金毛幼犬）">出售自家金毛（私人出售金毛幼犬）</a></li>
+                        <li class="py-2"><a href="/news/article-89348.htm" title="宠物领养协议书范本 定期回访模板下载 宠物领养协议书范本 定期回访模板下载">宠物领养协议书范本 定期回访模板下载 宠物领养协议书范本 定期回访模板下载</a></li>
+                        <li class="py-2"><a href="/news/article-85726.htm" title="免费咨询宠物医生在线（在线宠物医生免费咨询一下）">免费咨询宠物医生在线（在线宠物医生免费咨询一下）</a></li>
+                        <li class="py-2"><a href="/news/article-91487.htm" title="宠物回收平台同城可靠吗（宠物回收平台同城可靠吗安全吗）">宠物回收平台同城可靠吗（宠物回收平台同城可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/news/article-108476.htm" title="c# Semaphore（信号量）">c# Semaphore（信号量）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-27-free-high-speed-nodes.htm" title="日本VPN | 4月27日22.7M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享">日本VPN | 4月27日22.7M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-101904.htm" title="宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）">宠物食品工厂需要办理哪些证件（宠物食品工厂需要办理哪些证件和手续）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">82</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
