@@ -1,0 +1,214 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-110166.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Docker安装confluence企业版wiki</title>
+        <meta name="description" content="docker run --detach --publish8090:8090 cptactionhank/atlassian-confluence:7.2.0 2.访问http://ip:8090/ " />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-110166.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="Docker安装confluence企业版wiki" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/468de379c09cbc8ae07f7b87499a63ae.webp" />
+        <meta property="og:release_date" content="2025-05-03T10:27:34" />
+    <meta property="og:updated_time" content="2025-05-03T10:27:34" />
+        <meta property="og:description" content="docker run --detach --publish8090:8090 cptactionhank/atlassian-confluence:7.2.0 2.访问http://ip:8090/ " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Docker安装confluence企业版wiki">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">Docker安装confluence企业版wiki</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-dracula"> </h1> <pre><code class="prism language-bash">docker run --detach --publish<span class="token number">8090</span>:8090 cptactionhank/atlassian-confluence:7.2.0</code></pre> <h2><a id="2httpip8090_Confluence_22" rel="nofollow"></a>2.访问http://ip:8090/ 就可以看到Confluence的初始化和配置页面。</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/f22bf56fecd535fcf328d2ae2c61f123.jpg" alt="Docker安装confluence企业版wiki"></p> <h2><a id="3_next_ID_25" rel="nofollow"></a>3. 选择中文-&gt;next-&gt;选择“产品安装”-&gt;跳过插件安装-&gt;进入授权码界面 （这时大部分安装文件已经存在，可以开始破解。这里要记下服务器ID，破解时要用到）</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/39009182d6d60736a38240bc5bf08891.jpg" alt="Docker安装confluence企业版wiki"></p> <p>复制配置文件:</p> <pre><code class="prism language-bash"><span class="token function">sudo</span> docker<span class="token function">cp</span> d45ec455a4f7:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.4.1.jar ./atlassian-extras-2.4.jar</code></pre> <p>//下载到本地(可以使用xftp也可以下载)<br /> sz atlassian-extras-2.4.jar ( 该破解器只认识这个名称)<br /> //下破解工具 链接: https://pan.baidu.com/s/1i3qJlCGpelNsx6KRIcUniA 提取码: kpax</p> <p>解压后运行confluence_keygen.jar点.path 选择atlassian-extras-2.4.jar 破解成功同目录显示atlassian-extras-2.4.jar.bak</p> <p>① 打开下载的破解工具，运行confluence_keygen.jar<br /> ②将记录的server ID填入，Name随便填。<br /> ③点击gen, 生成key并记录。<br /> ④点击patch，选择刚下传到本地的atlassian-extras-2.4.jar文件进行破解.<br /> OK，破解完成后，将破解后的文件传回服务器（不要关闭破解工具，过会需复制key里面的密钥）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/6d819b57edd1f1c38371a06bbc142aab.jpg" alt="Docker安装confluence企业版wiki"></p> <p>//把atlassian-extras-2.4.jar 文件上传到服务器//然后复制到容器中</p> <p>sudo docker cp ./atlassian-extras-2.4.jar d45ec455a4f7:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.4.1.jar //停止重启</p> <h2><a id="5_confluence_55" rel="nofollow"></a>5. 重启confluence容器</h2> <pre><code class="prism language-bash">docker restart yourConfluenceContainer</code></pre> <h2><a id="6ip8090_key_next_62" rel="nofollow"></a>6.继续访问ip:8090, 拷贝黏贴刚生成的key. 然后next,进入数据库选择。</h2> <h2><a id="7_confluencedb_mysql__64" rel="nofollow"></a>7. 准备创建一个空的数据库confluencedb, 连接mysql. 参考</h2> <blockquote> <p>https://www.cnblogs.com/JeremyWYL/p/8302438.html CREATE DATABASE<br /> CHARACTER SET utf8 COLLATE utf8_bin; GRANT ALL<br /> PRIVILEGES ON .* TO ‘’@‘localhost’<br /> IDENTIFIED BY ‘’; GRANT ALL PRIVILEGES ON .*<br /> TO ‘’@’%’ IDENTIFIED BY ‘’; flush<br /> privileges;</p> </blockquote> <h2><a id="8_urljdbcdmysqldbserver3306databasenameuserUnicodetruecharacterEncodingUTF8_74" rel="nofollow"></a>8. 数据库url：jdbcd:mysql://:3306/?userUnicode=true&amp;characterEncoding=UTF-8</h2> <h2><a id="9__76" rel="nofollow"></a>9. 测试成功后就可以了。</h2> <p>mysql的配置文件中设置解决不正确的隔离级别的问题和其他问题。<br /> Confluence设置MySQL数据库报错：必须使用’READ-COMMITTED’作为默认隔离级别。<br /> 解决方案：</p> <pre><code class="prism language-bash">mysql -u root -p123456 SET GLOBAL<span class="token assign-left variable">tx_isolation</span><span class="token operator">=</span><span class="token string">'READ-COMMITTED'</span><span class="token punctuation">;</span></code></pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-109332.htm">以太网属性闪退（以太网属性闪退怎么解决）</a></p>
+                                        <p>下一个：<a href="/news/article-110167.htm">宠物粮市场销售渠道分析报告（宠物粮市场前景怎么样）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-5-5-free-subscribe-node.htm" title="日本VPN | 5月5日20.4M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享">日本VPN | 5月5日20.4M/S|免费Shadowrocket/Clash/SSR/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-94126.htm" title="被猫抓了一下红色划痕怎么办图片（被猫抓了一下红色划痕鼓起来了很痒）">被猫抓了一下红色划痕怎么办图片（被猫抓了一下红色划痕鼓起来了很痒）</a></li>
+                        <li class="py-2"><a href="/news/article-96087.htm" title="农历1970年7月17日命运（1970年7月17农历是什么时候）">农历1970年7月17日命运（1970年7月17农历是什么时候）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-26-free-node-subscribe-links.htm" title="日本VPN | 4月26日21.6M/S|免费Clash/Shadowrocket/V2ray/SSR免费节点订阅分享">日本VPN | 4月26日21.6M/S|免费Clash/Shadowrocket/V2ray/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-109332.htm" title="以太网属性闪退（以太网属性闪退怎么解决）">以太网属性闪退（以太网属性闪退怎么解决）</a></li>
+                        <li class="py-2"><a href="/news/article-91487.htm" title="宠物回收平台同城可靠吗（宠物回收平台同城可靠吗安全吗）">宠物回收平台同城可靠吗（宠物回收平台同城可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/news/article-105986.htm" title="宠物用品批发进货渠道一件代发多少钱（宠物用品怎么批发）">宠物用品批发进货渠道一件代发多少钱（宠物用品怎么批发）</a></li>
+                        <li class="py-2"><a href="/news/article-107651.htm" title="被宠物猫抓流血了怎么办图片（被宠物猫抓破皮出血了怎么办）">被宠物猫抓流血了怎么办图片（被宠物猫抓破皮出血了怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-104340.htm" title="宠物领养免费平台有哪些软件（宠物领养免费平台有哪些软件好）">宠物领养免费平台有哪些软件（宠物领养免费平台有哪些软件好）</a></li>
+                        <li class="py-2"><a href="/news/article-102711.htm" title="动物疫苗的作用有哪些种类 动物疫苗的作用有哪些种类的">动物疫苗的作用有哪些种类 动物疫苗的作用有哪些种类的</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">14</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">82</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

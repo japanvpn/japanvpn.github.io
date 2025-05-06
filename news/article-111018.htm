@@ -1,0 +1,214 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://japanvpn.github.io/news/article-111018.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</title>
+        <meta name="description" content="当我们在MySQL列上使用AUTO_INCREMENT时，序列号总是从默认值1或我们指定的值开始以升序递增。 MySQL不允许将AUTO_INCREMENT值更改为小于当前序列号的值。通过以下示例可以" />
+        <link rel="icon" href="/assets/website/img/clashmetagithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="日本VPN 订阅机场节点中文站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://japanvpn.github.io/news/article-111018.htm" />
+    <meta property="og:site_name" content="日本VPN 订阅机场节点中文站" />
+    <meta property="og:title" content="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？" />
+    <meta property="og:image" content="https://japanvpn.github.io/uploads/20240815-1/468de379c09cbc8ae07f7b87499a63ae.webp" />
+        <meta property="og:release_date" content="2025-05-04T09:26:47" />
+    <meta property="og:updated_time" content="2025-05-04T09:26:47" />
+        <meta property="og:description" content="当我们在MySQL列上使用AUTO_INCREMENT时，序列号总是从默认值1或我们指定的值开始以升序递增。 MySQL不允许将AUTO_INCREMENT值更改为小于当前序列号的值。通过以下示例可以" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/clashmetagithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/clashmetagithub/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3G316C7J2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R3G316C7J2');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100" data-page="detail">
+        <div class="lines-wrap">
+        <div class="lines-inner">
+            <div class="lines"></div>
+        </div>
+    </div>
+    <!-- END lines -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav dark js-site-navbar mb-5 site-navbar-target">
+        <div class="container">
+            <div class="site-navigation">
+                                <a href="/" class="logo m-0 float-left">日本VPN</span></a>
+                
+                <ul class="js-clone-nav d-none d-lg-inline-block site-menu float-left">
+                                        <li><a href="/" class="nav-link">首页</a></li>
+                                        <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="untree_co-hero" id="home-section">
+        <div class="container">
+            <div class="row align-items-center" style="height: 380px;overflow: hidden;padding-top: 0;">
+                <div class="col-12">
+                    <div class="dots"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 ml-auto order-lg-2" data-aos="fade-right" data-aos-delay="400">
+                            <img src="/assets/website/img/clashmetagithub/market-launch-pana.svg" alt="Image" class="img-fluid">
+                        </div> <!-- /.col-lg-6 -->
+                        <div class="col-lg-5">
+                            <h1 class="heading" data-aos="fade-up" data-aos-delay="0">当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</h1>
+                            <div class="excerpt" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div> <!-- /.excerpt -->
+                        </div> <!-- /.col-lg-5 -->
+                    </div>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.untree_co-hero -->
+    <div class="untree_co-section" id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p>当我们在MySQL列上使用AUTO_INCREMENT时，序列号总是从默认值1或我们指定的值开始以升序递增。</p> <p>MySQL不允许将AUTO_INCREMENT值更改为小于当前序列号的值。通过以下示例可以理解-</p> <h2>示例</h2> <p>假设我们有一个名为“ emp1”的表，并在创建表时将AUTO_INCREMENT VALUE指定为100。在表中插入值之后，该序列将从100开始，如以下查询的输出所示-</p> <pre>mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;Sohan&nbsp;&nbsp;&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| +-----+---------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>当我们尝试通过ALTER TABLE查询将AUTO_INCREMENT值更改为90时，MySQL不会返回错误和警告，因为查询还可以，但是当我们在表中插入新值时，MySQL会将指定的AUTO_INCREMENT值与当前序列号进行比较。由于指定的AUTO_INCREMENT值(90)小于当前序列号(101)，MySQL开始从102开始累积新值，可以从以下查询中观察到-</p> <pre>mysql&gt;&nbsp;ALTER&nbsp;TABLE&nbsp;EMP1&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;90; Records:&nbsp;2&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Aryan');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;Sohan&nbsp;&nbsp;&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| |&nbsp;102&nbsp;|&nbsp;Aryan&nbsp;&nbsp;&nbsp;| +-----+---------+ 3&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>相反，如果我们尝试将AUTO_INCREMENT更改为高于当前序列号的值，则MySQL将开始从指定值开始累积新值。</p> <p>为了在表'emp1'中更加清楚，我们将AUTO_INCREMENT值更改为108，高于当前序列号，因此MySQL从指定的AUTO_INCREMENT值（即从108开始）开始累积新插入的值。</p> <pre>mysql&gt;&nbsp;ALTER&nbsp;TABLE&nbsp;EMP1&nbsp;AUTO_INCREMENT&nbsp;=&nbsp;108; Records:&nbsp;3&nbsp;Duplicates:&nbsp;0&nbsp;Warnings:&nbsp;0  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Daksh');  mysql&gt;&nbsp;Insert&nbsp;into&nbsp;emp1(name)&nbsp;values('Yashraj');  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;emp1; +-----+---------+ |&nbsp;id&nbsp;&nbsp;|&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;| +-----+---------+ |&nbsp;100&nbsp;|&nbsp;Sohan&nbsp;&nbsp;&nbsp;| |&nbsp;101&nbsp;|&nbsp;Harshit&nbsp;| |&nbsp;102&nbsp;|&nbsp;Aryan&nbsp;&nbsp;&nbsp;| |&nbsp;108&nbsp;|&nbsp;Daksh&nbsp;&nbsp;&nbsp;| |&nbsp;109&nbsp;|&nbsp;Yashraj&nbsp;| +-----+---------+ 5&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110167.htm">宠物粮市场销售渠道分析报告（宠物粮市场前景怎么样）</a></p>
+                                        <p>下一个：<a href="/news/article-111020.htm">猫三联是三针吗（猫三联是三针还是一针）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-106882.htm" title="宠物医院猫咪疫苗促销（宠物店猫咪疫苗多少钱）">宠物医院猫咪疫苗促销（宠物店猫咪疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-111018.htm" title="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？">当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</a></li>
+                        <li class="py-2"><a href="/news/article-109332.htm" title="以太网属性闪退（以太网属性闪退怎么解决）">以太网属性闪退（以太网属性闪退怎么解决）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-8-free-v2ray.htm" title="日本VPN | 4月8日20M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享">日本VPN | 4月8日20M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-107649.htm" title="名品护肤一件代发（一件代发化妆品货源网）">名品护肤一件代发（一件代发化妆品货源网）</a></li>
+                        <li class="py-2"><a href="/news/article-105154.htm" title="动物医院收费标准相关规定最新文件是什么（动物医院的号码是多少）">动物医院收费标准相关规定最新文件是什么（动物医院的号码是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-98291.htm" title="宠物医院免费咨询电话（宠物医院24小时咨询电话）">宠物医院免费咨询电话（宠物医院24小时咨询电话）</a></li>
+                        <li class="py-2"><a href="/news/article-99754.htm" title="动物疫苗扎到手里怎么办图片视频大全（动物疫苗不小心扎到人身上会怎么样）">动物疫苗扎到手里怎么办图片视频大全（动物疫苗不小心扎到人身上会怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-101905.htm" title="动物疫苗经营许可证办理条件及流程 动物疫苗经营许可证办理条件及流程图">动物疫苗经营许可证办理条件及流程 动物疫苗经营许可证办理条件及流程图</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-free-v2ray.htm" title="日本VPN | 4月17日19.7M/S|免费Clash/Shadowrocket/SSR/V2ray免费节点订阅分享">日本VPN | 4月17日19.7M/S|免费Clash/Shadowrocket/SSR/V2ray免费节点订阅分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">14</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">82</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.container -->
+    </div> <!-- /.untree_co-section -->
+        <div class="site-footer">
+        <div class="footer-dots"></div> <!-- /.footer-dots -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">日本VPN 订阅机场节点中文站</a> 版权所有
+                        <br />
+                        Powered by WordPress
+                    </p>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/jquery.fancybox.min.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/aos.js"></script>
+    <script src="/assets/website/js/frontend/clashmetagithub/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
