@@ -340,36 +340,6 @@ A5：主要取决于网络状况和服务器质量，合理配置有助于提升
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 的 XTLS 模式能提升传输效率吗？</h5></div>
-    <div class="panel-body">
-        XTLS 模式通过减少冗余加密和握手次数，降低延迟，提高吞吐量。在高并发和短连接场景下，效率明显优于普通 TLS，同时保持数据安全性和隐蔽性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 的 TUN 模式能全局代理吗？</h5></div>
-    <div class="panel-body">
-        TUN 模式拦截系统 IP 层流量，可实现全局代理，无需手动设置浏览器或应用代理。适合需要全局科学上网或游戏加速的场景，保证所有流量均走代理节点。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 自动切换节点机制如何工作？</h5></div>
-    <div class="panel-body">
-        PassWall2 会根据节点延迟和丢包率测试结果，结合策略组自动选择最优节点处理流量。无需用户手动切换，保证网页、视频和游戏流量的速度和稳定性，优化网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的主要特点是什么？</h5></div>
-    <div class="panel-body">
-        WinXray 是一款基于 V2Ray 核心的 Windows 客户端，界面直观，支持 VMess、VLess、Trojan、Shadowsocks 等多协议。它提供一键导入订阅、节点测速、自动分流等功能，是适合初学者和进阶用户的图形化代理工具。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何通过域名规则实现精准分流？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持根据域名匹配流量，将不同网站或应用流量分配到指定节点。结合策略组，可实现自动切换最优节点，优化访问速度和网络稳定性，提高整体使用体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
-    <div class="panel-body">
-        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 的多路复用功能有哪些优势？</h5></div>
     <div class="panel-body">
         多路复用允许多个请求共享同一 QUIC 连接，减少握手次数和延迟。高并发情况下可以提升吞吐量和稳定性，特别适合短连接频繁请求的应用，如游戏或即时通讯。<hr />    </div>
@@ -380,9 +350,39 @@ A5：主要取决于网络状况和服务器质量，合理配置有助于提升
         AEAD 加密提供更强的安全性和抗重放攻击能力，同时隐藏流量特征，降低被 DPI 检测风险。在高封锁环境下使用，可提升连接稳定性和长期可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的主要特点是什么？</h5></div>
+    <div class="panel-body">
+        WinXray 是一款基于 V2Ray 核心的 Windows 客户端，界面直观，支持 VMess、VLess、Trojan、Shadowsocks 等多协议。它提供一键导入订阅、节点测速、自动分流等功能，是适合初学者和进阶用户的图形化代理工具。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 自动切换节点机制如何工作？</h5></div>
+    <div class="panel-body">
+        PassWall2 会根据节点延迟和丢包率测试结果，结合策略组自动选择最优节点处理流量。无需用户手动切换，保证网页、视频和游戏流量的速度和稳定性，优化网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
+    <div class="panel-body">
+        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS 的 XTLS 模式能提升传输效率吗？</h5></div>
+    <div class="panel-body">
+        XTLS 模式通过减少冗余加密和握手次数，降低延迟，提高吞吐量。在高并发和短连接场景下，效率明显优于普通 TLS，同时保持数据安全性和隐蔽性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何通过域名规则实现精准分流？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持根据域名匹配流量，将不同网站或应用流量分配到指定节点。结合策略组，可实现自动切换最优节点，优化访问速度和网络稳定性，提高整体使用体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 全局代理与规则代理的适用场景是什么？</h5></div>
     <div class="panel-body">
         全局代理适合游戏或全局科学上网，将所有流量通过节点；规则代理适合只对特定应用或网站进行代理。用户可根据需求选择，提高带宽利用和网络效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mellow 的 TUN 模式能全局代理吗？</h5></div>
+    <div class="panel-body">
+        TUN 模式拦截系统 IP 层流量，可实现全局代理，无需手动设置浏览器或应用代理。适合需要全局科学上网或游戏加速的场景，保证所有流量均走代理节点。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 的多用户限速功能如何使用？</h5></div>
@@ -416,16 +416,16 @@ A5：主要取决于网络状况和服务器质量，合理配置有助于提升
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-clash-verge-rev-node.htm" title="日本免费VPN - 11月17日18.9M/S|免费SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月17日18.9M/S|免费SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-8-clash-node-github.htm" title="日本免费VPN - 11月8日19.3M/S|免费V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月8日19.3M/S|免费V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-8-clash-stash-node.htm" title="日本免费VPN - 10月8日21.8M/S|免费V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月8日21.8M/S|免费V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-15-free-node-subscribe.htm" title="日本免费VPN - 10月15日19.8M/S|免费V2ray节点/Clash节点/SSR节点/Singbox节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月15日19.8M/S|免费V2ray节点/Clash节点/SSR节点/Singbox节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-14-clash-node.htm" title="日本免费VPN - 11月14日19.1M/S|免费Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月14日19.1M/S|免费Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-17-clash-verge-rev-node-github.htm" title="日本免费VPN - 10月17日20.8M/S|免费SSR节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月17日20.8M/S|免费SSR节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-11-clash-node-github.htm" title="日本免费VPN - 11月11日22.2M/S|免费Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月11日22.2M/S|免费Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-7-clash-node.htm" title="日本免费VPN - 10月7日22M/S|免费Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月7日22M/S|免费Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-12-free-node-subscribe.htm" title="日本免费VPN - 11月12日20.9M/S|免费Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月12日20.9M/S|免费Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-6-clash-meta-github.htm" title="日本免费VPN - 10月6日22.1M/S|免费Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月6日22.1M/S|免费Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-27-clash-v2ray-ss-ssr.htm" title="日本免费VPN - 10月27日19M/S|免费V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月27日19M/S|免费V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-clash-verge-rev-node-share.htm" title="日本免费VPN - 11月9日19.4M/S|免费Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月9日19.4M/S|免费Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-25-clash-verge-rev-windows.htm" title="日本免费VPN - 10月25日18.5M/S|免费SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月25日18.5M/S|免费SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-18-clash-verge-rev-nodes.htm" title="日本免费VPN - 10月18日19.1M/S|免费Shadowrocket节点/Singbox节点/Clash节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月18日19.1M/S|免费Shadowrocket节点/Singbox节点/Clash节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-4-clash-verge-rev-node-share.htm" title="日本免费VPN - 10月4日22.2M/S|免费Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月4日22.2M/S|免费Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-3-clash-node-github.htm" title="日本免费VPN - 11月3日20M/S|免费Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月3日20M/S|免费Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-12-clash-v2ray-ss-ssr.htm" title="日本免费VPN - 10月12日18.2M/S|免费SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月12日18.2M/S|免费SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-21-free-node-subscribe.htm" title="日本免费VPN - 10月21日18.2M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月21日18.2M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-31-clash-verge-rev-node.htm" title="日本免费VPN - 10月31日21.7M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/SSR节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 10月31日21.7M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/SSR节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-28-clash-verge-rev-node-share.htm" title="日本免费VPN - 11月28日19.8M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月28日19.8M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -437,7 +437,7 @@ A5：主要取决于网络状况和服务器质量，合理配置有助于提升
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
