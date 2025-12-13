@@ -408,34 +408,14 @@ A4：理论上可以，但需服务器支持解锁流媒体，并非所有节点
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的延迟测试如何影响策略组选择？</h5></div>
-    <div class="panel-body">
-        PassWall2 会根据节点延迟结果更新策略组的优先节点，自动选择延迟最低的节点处理流量。这样可以优化访问速度，提高网页浏览、视频和游戏体验的稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何给 Clash 或 Sing-box 添加本地广告屏蔽规则？</h5></div>
-    <div class="panel-body">
-        可导入公共广告域名列表（如 ads、trackers）并将其指向 `REJECT` 或 `DIRECT`（根据需求）；还可以使用 rule-provider 自动更新广告规则，并结合 hosts 或 DNS 层面进行联合拦截以提升屏蔽效果。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 在移动网络的优势？</h5></div>
-    <div class="panel-body">
-        XTLS 模式减少握手次数和加密开销，适合高延迟或不稳定的移动网络。结合策略组和多节点切换，可提升网页浏览、视频播放和游戏的连接稳定性和流畅度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的规则订阅更新有哪些注意事项？</h5></div>
-    <div class="panel-body">
-        Clash 订阅更新需保证网络畅通，规则文件格式正确，并与客户端版本兼容。建议定期更新规则以获得最新节点和分流规则，同时注意避免频繁刷新造成性能问题。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>如何在 macOS 上运行 ClashX？</h5></div>
     <div class="panel-body">
         ClashX 是 macOS 平台专用客户端，用户可在 GitHub 下载 DMG 安装包。安装后导入订阅即可使用，支持系统代理集成、自动更新和延迟测试。界面简洁直观，深受苹果用户欢迎。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 支持多用户配置吗？</h5></div>
+    <div class="panel-heading"><h5>Trojan 的伪装域名配置有哪些注意事项？</h5></div>
     <div class="panel-body">
-        Hysteria2 支持多用户配置，管理员可以在服务器端为不同用户分配独立凭证。这样既能保障隐私，也便于流量统计和限速控制，适合团队或小型共享环境。<hr />    </div>
+        伪装域名必须真实可访问且证书有效，否则无法建立连接。正确配置可隐藏真实流量特征，降低被封锁和检测风险，提高节点安全性和长期可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的策略组支持哪些节点选择策略？</h5></div>
@@ -443,9 +423,14 @@ A4：理论上可以，但需服务器支持解锁流媒体，并非所有节点
         支持按延迟选择、随机选择、轮询或手动选择节点。结合规则匹配，用户可实现不同网站或应用使用不同节点，提高访问速度和网络稳定性，同时降低管理复杂度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Quantumult X 的分流规则如何设置？</h5></div>
+    <div class="panel-heading"><h5>VLESS + XTLS 在移动网络的优势？</h5></div>
     <div class="panel-body">
-        Quantumult X 通过规则分组来控制流量走向。用户可自定义策略组，将特定网站流量指向不同节点。编辑规则文件时，可利用 GEOIP、DOMAIN-SUFFIX 等指令精确管理网络行为。<hr />    </div>
+        XTLS 模式减少握手次数和加密开销，适合高延迟或不稳定的移动网络。结合策略组和多节点切换，可提升网页浏览、视频播放和游戏的连接稳定性和流畅度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 的延迟测试如何影响策略组选择？</h5></div>
+    <div class="panel-body">
+        PassWall2 会根据节点延迟结果更新策略组的优先节点，自动选择延迟最低的节点处理流量。这样可以优化访问速度，提高网页浏览、视频和游戏体验的稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 的配置文件可以与 Clash 通用吗？</h5></div>
@@ -453,9 +438,24 @@ A4：理论上可以，但需服务器支持解锁流媒体，并非所有节点
         Surfboard 基于 Clash 核心，因此支持大部分 YAML 配置文件，但部分字段如 rule-provider、external-controller 等可能不兼容。建议使用订阅转换工具将 Clash 文件转换为 Surfboard 兼容格式导入。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名配置有哪些注意事项？</h5></div>
+    <div class="panel-heading"><h5>Clash 的规则订阅更新有哪些注意事项？</h5></div>
     <div class="panel-body">
-        伪装域名必须真实可访问且证书有效，否则无法建立连接。正确配置可隐藏真实流量特征，降低被封锁和检测风险，提高节点安全性和长期可用性。    </div>
+        Clash 订阅更新需保证网络畅通，规则文件格式正确，并与客户端版本兼容。建议定期更新规则以获得最新节点和分流规则，同时注意避免频繁刷新造成性能问题。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Quantumult X 的分流规则如何设置？</h5></div>
+    <div class="panel-body">
+        Quantumult X 通过规则分组来控制流量走向。用户可自定义策略组，将特定网站流量指向不同节点。编辑规则文件时，可利用 GEOIP、DOMAIN-SUFFIX 等指令精确管理网络行为。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何给 Clash 或 Sing-box 添加本地广告屏蔽规则？</h5></div>
+    <div class="panel-body">
+        可导入公共广告域名列表（如 ads、trackers）并将其指向 `REJECT` 或 `DIRECT`（根据需求）；还可以使用 rule-provider 自动更新广告规则，并结合 hosts 或 DNS 层面进行联合拦截以提升屏蔽效果。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 支持多用户配置吗？</h5></div>
+    <div class="panel-body">
+        Hysteria2 支持多用户配置，管理员可以在服务器端为不同用户分配独立凭证。这样既能保障隐私，也便于流量统计和限速控制，适合团队或小型共享环境。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -484,16 +484,16 @@ A4：理论上可以，但需服务器支持解锁流媒体，并非所有节点
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-12-4-clash-verge-rev-windows.htm" title="日本免费VPN - 12月4日21.9M/S|免费V2ray节点/Clash节点/Singbox节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 12月4日21.9M/S|免费V2ray节点/Clash节点/Singbox节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-29-node-share.htm" title="日本免费VPN - 11月29日20M/S|免费Clash节点/SSR节点/Shadowrocket节点/Singbox节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月29日20M/S|免费Clash节点/SSR节点/Shadowrocket节点/Singbox节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-node-subscribe.htm" title="日本免费VPN - 12月2日20.3M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 12月2日20.3M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-clash-verge-rev-node.htm" title="日本免费VPN - 11月17日18.9M/S|免费SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月17日18.9M/S|免费SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-node-subscribe.htm" title="日本免费VPN - 11月30日18.9M/S|免费Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月30日18.9M/S|免费Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-22-clash-verge-rev-node-share.htm" title="日本免费VPN - 11月22日19M/S|免费Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月22日19M/S|免费Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-clash-verge-rev-nodes.htm" title="日本免费VPN - 11月18日20.3M/S|免费Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月18日20.3M/S|免费Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-27-clash-verge-rev-github.htm" title="日本免费VPN - 11月27日18M/S|免费Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月27日18M/S|免费Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-5-clash-verge-rev-windows.htm" title="日本免费VPN - 11月5日20M/S|免费Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月5日20M/S|免费Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-5-clash-verge-rev-node-github.htm" title="日本免费VPN - 12月5日21.2M/S|免费V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 12月5日21.2M/S|免费V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-28-clash-verge-rev-node-share.htm" title="日本免费VPN - 11月28日19.8M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月28日19.8M/S|免费Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-20-clash-verge-rev-github.htm" title="日本免费VPN - 11月20日20.5M/S|免费Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月20日20.5M/S|免费Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-9-clash-verge-rev-node.htm" title="日本免费VPN - 12月9日22.7M/S|免费V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 12月9日22.7M/S|免费V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-node-subscribe.htm" title="日本免费VPN - 12月2日20.3M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 12月2日20.3M/S|免费Clash节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-23-clash-stash.htm" title="日本免费VPN - 11月23日21.8M/S|免费V2ray节点/Clash节点/SSR节点/Shadowrocket节点/Singbox节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月23日21.8M/S|免费V2ray节点/Clash节点/SSR节点/Shadowrocket节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-4-clash-verge-rev-windows.htm" title="日本免费VPN - 12月4日21.9M/S|免费V2ray节点/Clash节点/Singbox节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 12月4日21.9M/S|免费V2ray节点/Clash节点/Singbox节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-clash-node-github.htm" title="日本免费VPN - 11月7日22.1M/S|免费V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月7日22.1M/S|免费V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-node-subscribe.htm" title="日本免费VPN - 11月30日18.9M/S|免费Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点节点推荐，V2rayC梯子购买推荐">日本免费VPN - 11月30日18.9M/S|免费Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -505,7 +505,7 @@ A4：理论上可以，但需服务器支持解锁流媒体，并非所有节点
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">5</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
