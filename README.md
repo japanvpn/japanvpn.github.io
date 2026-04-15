@@ -1,4 +1,4 @@
-# 日本免费VPN - 4月8日22.5M/S|免费SSR节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点节点推荐，V2rayC梯子购买推荐  更新时间 2026-04-08 16:56:54
+# 日本免费VPN - 4月15日21.7M/S|免费Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐  更新时间 2026-04-15 08:23:14
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://japanvpn.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://japanvpn.github.io/uploads/2026/04/0-20260408.yaml
-- https://japanvpn.github.io/uploads/2026/04/1-20260408.yaml
-- https://japanvpn.github.io/uploads/2026/04/2-20260408.yaml
-- https://japanvpn.github.io/uploads/2026/04/3-20260408.yaml
-- https://japanvpn.github.io/uploads/2026/04/4-20260408.yaml
+- https://japanvpn.github.io/uploads/2026/04/0-20260415.yaml
+- https://japanvpn.github.io/uploads/2026/04/1-20260415.yaml
+- https://japanvpn.github.io/uploads/2026/04/2-20260415.yaml
+- https://japanvpn.github.io/uploads/2026/04/3-20260415.yaml
+- https://japanvpn.github.io/uploads/2026/04/4-20260415.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://japanvpn.github.io/uploads/2026/04/0-20260408.txt
-- https://japanvpn.github.io/uploads/2026/04/1-20260408.txt
-- https://japanvpn.github.io/uploads/2026/04/2-20260408.txt
-- https://japanvpn.github.io/uploads/2026/04/3-20260408.txt
-- https://japanvpn.github.io/uploads/2026/04/4-20260408.txt
+- https://japanvpn.github.io/uploads/2026/04/0-20260415.txt
+- https://japanvpn.github.io/uploads/2026/04/1-20260415.txt
+- https://japanvpn.github.io/uploads/2026/04/2-20260415.txt
+- https://japanvpn.github.io/uploads/2026/04/3-20260415.txt
+- https://japanvpn.github.io/uploads/2026/04/4-20260415.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://japanvpn.github.io/uploads/2026/04/20260408.json
+- https://japanvpn.github.io/uploads/2026/04/20260415.json
 
 ## 更多Clash节点订阅 ：
 
